@@ -157,7 +157,7 @@ export async function createFormRadio(page, options = {}) {
   await page.getByRole('checkbox', { name: 'Enable Quantity on my form' }).check();
   await page.waitForTimeout(1000);
 
-  // First
+  // First's
   await page.getByRole('textbox', { name: 'Price' }).fill('100');
   await page.getByRole('textbox', { name: 'Label', exact: true }).fill('$ 100');
   await page.waitForTimeout(1000);
@@ -248,7 +248,6 @@ export async function createFormTabular(page, options = {}) {
   await page.getByRole('button', { name: 'Publish', exact: true }).click();
   return shortcode;
 }
-
 
 
 // Function to add a page with shortcode
