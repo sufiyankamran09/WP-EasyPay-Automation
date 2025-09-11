@@ -7,11 +7,13 @@ import {
   verifyPaymentSuccess,
   deletepage,
   deleteform,
+  checkSquareTransaction,
+  takeScreenshot,
 } from './utils/formUtils.js';
 
 // Create and submit a simple payment form with payment dropdown layout ($ Currency symbol)
 test('Simple form with dropdown layout with $', async ({ page }) => {
-  test.setTimeout(70000);
+  test.setTimeout(200000);
 
   // Login
   await loginToWordPress(page);
@@ -28,19 +30,25 @@ test('Simple form with dropdown layout with $', async ({ page }) => {
   await addpage(page, shortcode);
 
   // Submit form (Dropdown flow) and pay with $
-  await submitFormDropdown(page, { currency: 'dollar' });
+  const submittedAmount1 = await submitFormDropdown(page, { currency: 'dollar' });
 
   // Verify success
   await verifyPaymentSuccess(page);
+  await checkSquareTransaction(page, submittedAmount1);
 
   // Cleanup (delete the created page and form)
   await deletepage(page);
   await deleteform(page);
+  await takeScreenshot(page);
+
 });
+
+
+
 
 // Create and submit a simple payment form with payment dropdown layout (USD)
 test('Simple form with dropdown layout with USD', async ({ page }) => {
-  test.setTimeout(70000);
+  test.setTimeout(200000);
 
   // Login
   await loginToWordPress(page);
@@ -57,19 +65,24 @@ test('Simple form with dropdown layout with USD', async ({ page }) => {
   await addpage(page, shortcode);
 
   // Submit form (Dropdown flow) and pay with USD
-  await submitFormDropdown(page, { currency: 'usd' });
+  const submittedAmount2 = await submitFormDropdown(page, { currency: 'usd' });
 
   // Verify success
   await verifyPaymentSuccess(page);
+  await checkSquareTransaction(page, submittedAmount2);
 
   // Cleanup (delete the created page and form)
   await deletepage(page);
   await deleteform(page);
+  await takeScreenshot(page);
+
 });
+
+
 
 // Create and submit a simple payment form with payment dropdown layout (No code/symbol)
 test('Simple form with dropdown layout with No code/symbol', async ({ page }) => {
-  test.setTimeout(70000);
+  test.setTimeout(200000);
 
   // Login
   await loginToWordPress(page);
@@ -86,12 +99,15 @@ test('Simple form with dropdown layout with No code/symbol', async ({ page }) =>
   await addpage(page, shortcode);
 
   // Submit form (Dropdown flow) expecting generic Pay button
-  await submitFormDropdown(page, { currency: 'none' });
+  const submittedAmount3 = await submitFormDropdown(page, { currency: 'none' });
 
   // Verify success
   await verifyPaymentSuccess(page);
+  await checkSquareTransaction(page, submittedAmount3);
 
   // Cleanup (delete the created page and form)
   await deletepage(page);
   await deleteform(page);
+  await takeScreenshot(page);
+
 });

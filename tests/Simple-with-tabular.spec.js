@@ -7,11 +7,17 @@ import {
   verifyPaymentSuccess,
   deletepage,
   deleteform,
+  checkSquareTransaction,
+  takeScreenshot,
 } from './utils/formUtils.js';
+
+
+
+
 
 // Create and submit a simple payment form with payment Tabular layout ($)
 test('Simple form with tabular layout with $', async ({ page }) => {
-    test.setTimeout(70000);
+    test.setTimeout(200000);
   
     // Login
     await loginToWordPress(page);
@@ -28,20 +34,27 @@ test('Simple form with tabular layout with $', async ({ page }) => {
     await addpage(page, shortcode);
   
     // Submit form (Tabular flow) and pay with $
-    await submitFormTabular(page, { currency: 'dollar' });
+    const submittedAmount1 = await submitFormTabular(page, { currency: 'dollar' });
   
     // Verify success
     await verifyPaymentSuccess(page);
+    await checkSquareTransaction(page, submittedAmount1);
   
     // Cleanup (delete the created page and form)
     await deletepage(page);
     await deleteform(page);
+    await takeScreenshot(page);
   });
 
   
+
+
+  
+
+
   // Create and submit a simple payment form with payment Tabular layout (USD)
 test('Simple form with tabular layout with USD', async ({ page }) => {
-    test.setTimeout(70000);
+    test.setTimeout(200000);
   
     // Login
     await loginToWordPress(page);
@@ -58,20 +71,29 @@ test('Simple form with tabular layout with USD', async ({ page }) => {
     await addpage(page, shortcode);
   
     // Submit form (Tabular flow) and pay with USD
-    await submitFormTabular(page, { currency: 'usd' });
+    const submittedAmount2 = await submitFormTabular(page, { currency: 'usd' });
   
     // Verify success
     await verifyPaymentSuccess(page);
+    await checkSquareTransaction(page, submittedAmount2);
   
     // Cleanup (delete the created page and form)
     await deletepage(page);
     await deleteform(page);
+    
+    await takeScreenshot(page);
   });
 
   
+
+
+
+
+
+
 // Create and submit a simple payment form with payment Tabular layout (No code/symbol)
 test('Simple form with tabular layout with No Code/Symbol', async ({ page }) => {
-  test.setTimeout(70000);
+  test.setTimeout(200000);
 
   // Login
   await loginToWordPress(page);
@@ -88,14 +110,16 @@ test('Simple form with tabular layout with No Code/Symbol', async ({ page }) => 
   await addpage(page, shortcode);
 
   // Submit form (Tabular flow) expecting generic Pay button
-  await submitFormTabular(page, { currency: 'none' });
+  const submittedAmount3 = await submitFormTabular(page, { currency: 'none' });
 
   // Verify success
   await verifyPaymentSuccess(page);
+  await checkSquareTransaction(page, submittedAmount3);
 
   // Cleanup (delete the created page and form)
   await deletepage(page);
   await deleteform(page);
+  await takeScreenshot(page);
 });
 
 

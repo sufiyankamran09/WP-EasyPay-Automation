@@ -2,16 +2,17 @@
 export const testConfig = {
   // WordPress credentials
   credentials: {
-    username: 'xekolohuwu5455',
+    username: 'sesotatuca6068',
     password: 'TestingQA@79791'
   },
   
   // URLs
   urls: {
-    login: 'https://qa-automation-easypay.instawp.xyz/wp-login.php',
-    admin: 'https://qa-automation-easypay.instawp.xyz/wp-admin/',
-    pages: 'https://qa-automation-easypay.instawp.xyz/wp-admin/edit.php?post_type=page',
-    forms: 'https://qa-automation-easypay.instawp.xyz/wp-admin/edit.php?post_type=wp_easy_pay'
+    login: 'https://wppayautomation.instawp.xyz/wp-login.php',
+    admin: 'https://wppayautomation.instawp.xyz/wp-admin/',
+    page:   'https://wppayautomation.instawp.xyz/wp-admin/post-new.php?post_type=page',
+    pages: 'https://wppayautomation.instawp.xyz/wp-admin/edit.php?post_type=page',
+    forms: 'https://wppayautomation.instawp.xyz/wp-admin/edit.php?post_type=wp_easy_pay'
   },
   
   // Test data
@@ -28,7 +29,8 @@ export const testConfig = {
     maxAmount: '1000',
     successMessage: 'Your Payment Successfully sent',
     termsLabel: 'This is the terms and condition',
-    termsUrl: 'www.google.com'
+    termsUrl: 'www.google.com',
+    termsUrl1: 'https://wpeasypay.com/documentation/'
   },
   
   // Payment test data

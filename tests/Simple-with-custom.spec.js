@@ -7,9 +7,12 @@ import {
   submitFormCustomPopupMultistep,
   verifyPaymentSuccess,
   deletepage,
-  deleteform
+  deleteform,
+  checkSquareTransaction,
+  takeScreenshot,
 } from './utils/formUtils.js';
 
+//   Form creation  // 
 test('WordPress Form Creation Test', async ({ page }) => {
   test.setTimeout(60000);
   
@@ -24,38 +27,50 @@ test('WordPress Form Creation Test', async ({ page }) => {
   console.log("Generated shortcode:", shortcode);
 });
 
+
+
+
+
+
 //Create and submit a simple payment form with payment custom layout //
 // $ Currency symbol//
 test('$ Symbol Currency', async ({ page }) => {
-  test.setTimeout(70000);
+  test.setTimeout(200000);
 
   // Login WP using utility function
   await loginToWordPress(page);
 
-  // Create Form using existing utility function
+   // Create Form using existing utility function
   const shortcode = await createformCustom(page, { currency: 'dollar' });
 
-  // Add Page using utility function
+   // Add Page using utility function
   await addpage(page, shortcode);
 
-  // Form Submit using utility function
-  await CustomFormSubmit(page, { currency: 'dollar' });
+   // Form Submit using utility function
+  const submittedAmount1 = await CustomFormSubmit(page, { currency: 'dollar' });
 
-  // Verify payment success using utility function
-  await verifyPaymentSuccess(page);
+  // // Verify payment success using utility function
+   await verifyPaymentSuccess(page);
+   await checkSquareTransaction(page,submittedAmount1);
 
-  // Delete Page using utility function
-  await deletepage(page);
+   // Delete Page using utility function
+   await deletepage(page);
 
-  // Delete Form using utility function
-  await deleteform(page);
+   // Delete Form using utility function
+   await deleteform(page);
+   await takeScreenshot(page);
+
 });
+
+
+
+
 
 
 //Create and submit a simple payment form with payment custom layout //
 // USD currency symbol flow 
 test('USD Symbol Currency', async ({ page }) => {
-  test.setTimeout(70000);
+  test.setTimeout(200000);
 
   // Login WP using utility function
   await loginToWordPress(page);
@@ -67,21 +82,30 @@ test('USD Symbol Currency', async ({ page }) => {
   await addpage(page, shortcode);
 
   // Submit form expecting USD indicators
-  await CustomFormSubmit(page, { currency: 'usd' });
+  const submittedAmount2 = await CustomFormSubmit(page, { currency: 'usd' });
 
   // Verify success
   await verifyPaymentSuccess(page);
+  await checkSquareTransaction(page, submittedAmount2);
 
   // Cleanup
   await deletepage(page);
   await deleteform(page);
+
+  await takeScreenshot(page);
+
 });
+
+
+
+
+
 
 
 //Create and submit a simple payment form with payment custom layout //
 // No code/symbol flow 
 test('No Code/Symbol Currency', async ({ page }) => {
-  test.setTimeout(70000);
+  test.setTimeout(200000);
 
   // Login WP using utility function
   await loginToWordPress(page);
@@ -93,21 +117,30 @@ test('No Code/Symbol Currency', async ({ page }) => {
   await addpage(page, shortcode);
 
   // Submit form expecting no currency indicator
-  await CustomFormSubmit(page, { currency: 'none' });
+  const submittedAmount3 = await CustomFormSubmit(page, { currency: 'none' });
 
   // Verify success
   await verifyPaymentSuccess(page);
+  await checkSquareTransaction(page, submittedAmount3);
 
   // Cleanup
   await deletepage(page);
   await deleteform(page);
+  await takeScreenshot(page);
+
 });
+
+
+
+
+
+
 
 
 //Create and submit a simple payment form with payment custom layout //
 // Custom layout with popup + multistep (Currency $)
 test('$ Symbol Currency with Popup', async ({ page }) => {
-  test.setTimeout(70000);
+  test.setTimeout(200000);
 
   // Login
   await loginToWordPress(page);
@@ -124,17 +157,20 @@ test('$ Symbol Currency with Popup', async ({ page }) => {
   await addpage(page, shortcode);
 
   // Submit via popup + multistep
-  await submitFormCustomPopupMultistep(page, {
+  const submittedAmount4 = await submitFormCustomPopupMultistep(page, {
     currency: 'dollar',
     popupButtonText: 'Open the Simple form'
   });
 
   // Verify success
   await verifyPaymentSuccess(page);
+  await checkSquareTransaction(page, submittedAmount4);
 
   // Cleanup
   await deletepage(page);
   await deleteform(page);
+  await takeScreenshot(page);
+
 });
 
 
