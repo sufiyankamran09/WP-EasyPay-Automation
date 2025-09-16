@@ -9,7 +9,10 @@ import {
   deleteform,
   checkSquareTransaction,
   takeScreenshot,
+  deletePageByName,
 } from './utils/formUtils.js';
+
+
 
 // Create and submit a simple payment form with payment dropdown layout ($ Currency symbol)
 test('Simple form with dropdown layout with $', async ({ page }) => {
@@ -27,7 +30,7 @@ test('Simple form with dropdown layout with $', async ({ page }) => {
   expect(shortcode).toBeTruthy();
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, '$ Dropdown Form Page');
 
   // Submit form (Dropdown flow) and pay with $
   const submittedAmount1 = await submitFormDropdown(page, { currency: 'dollar' });
@@ -37,11 +40,14 @@ test('Simple form with dropdown layout with $', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount1);
 
   // Cleanup (delete the created page and form)
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, '$ Dropdown Form Page');
+  await deleteform(page, 'Simple Payment Form');
   await takeScreenshot(page);
 
 });
+
+
+
 
 
 
@@ -62,7 +68,7 @@ test('Simple form with dropdown layout with USD', async ({ page }) => {
   expect(shortcode).toBeTruthy();
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, 'USD Dropdown Form Page');
 
   // Submit form (Dropdown flow) and pay with USD
   const submittedAmount2 = await submitFormDropdown(page, { currency: 'usd' });
@@ -72,11 +78,14 @@ test('Simple form with dropdown layout with USD', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount2);
 
   // Cleanup (delete the created page and form)
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, 'USD Dropdown Form Page');
+  await deleteform(page, 'Simple Payment Form');
   await takeScreenshot(page);
 
 });
+
+
+
 
 
 
@@ -96,7 +105,7 @@ test('Simple form with dropdown layout with No code/symbol', async ({ page }) =>
   expect(shortcode).toBeTruthy();
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, 'No Code/Symbol Dropdown Form Page');
 
   // Submit form (Dropdown flow) expecting generic Pay button
   const submittedAmount3 = await submitFormDropdown(page, { currency: 'none' });
@@ -106,8 +115,8 @@ test('Simple form with dropdown layout with No code/symbol', async ({ page }) =>
   await checkSquareTransaction(page, submittedAmount3);
 
   // Cleanup (delete the created page and form)
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, 'No Code/Symbol Dropdown Form Page');
+  await deleteform(page, 'Simple Payment Form');
   await takeScreenshot(page);
 
 });

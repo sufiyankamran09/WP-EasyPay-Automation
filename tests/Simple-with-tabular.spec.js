@@ -9,6 +9,7 @@ import {
   deleteform,
   checkSquareTransaction,
   takeScreenshot,
+  deletePageByName,
 } from './utils/formUtils.js';
 
 
@@ -31,7 +32,7 @@ test('Simple form with tabular layout with $', async ({ page }) => {
     expect(shortcode).toBeTruthy();
   
     // Add Page with shortcode
-    await addpage(page, shortcode);
+    await addpage(page, shortcode, '$ Tabular Form Page');
   
     // Submit form (Tabular flow) and pay with $
     const submittedAmount1 = await submitFormTabular(page, { currency: 'dollar' });
@@ -41,8 +42,8 @@ test('Simple form with tabular layout with $', async ({ page }) => {
     await checkSquareTransaction(page, submittedAmount1);
   
     // Cleanup (delete the created page and form)
-    await deletepage(page);
-    await deleteform(page);
+    await deletePageByName(page, '$ Tabular Form Page');
+    await deleteform(page, 'Simple Payment Form');
     await takeScreenshot(page);
   });
 
@@ -68,7 +69,7 @@ test('Simple form with tabular layout with USD', async ({ page }) => {
     expect(shortcode).toBeTruthy();
   
     // Add Page with shortcode
-    await addpage(page, shortcode);
+    await addpage(page, shortcode, 'USD Tabular Form Page');
   
     // Submit form (Tabular flow) and pay with USD
     const submittedAmount2 = await submitFormTabular(page, { currency: 'usd' });
@@ -78,8 +79,8 @@ test('Simple form with tabular layout with USD', async ({ page }) => {
     await checkSquareTransaction(page, submittedAmount2);
   
     // Cleanup (delete the created page and form)
-    await deletepage(page);
-    await deleteform(page);
+    await deletePageByName(page, 'USD Tabular Form Page');
+    await deleteform(page, 'Simple Payment Form');
     
     await takeScreenshot(page);
   });
@@ -107,7 +108,7 @@ test('Simple form with tabular layout with No Code/Symbol', async ({ page }) => 
   expect(shortcode).toBeTruthy();
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, 'No Code/Symbol Tabular Form Page');
 
   // Submit form (Tabular flow) expecting generic Pay button
   const submittedAmount3 = await submitFormTabular(page, { currency: 'none' });
@@ -117,8 +118,8 @@ test('Simple form with tabular layout with No Code/Symbol', async ({ page }) => 
   await checkSquareTransaction(page, submittedAmount3);
 
   // Cleanup (delete the created page and form)
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, 'No Code/Symbol Tabular Form Page');
+  await deleteform(page, 'Simple Payment Form');
   await takeScreenshot(page);
 });
 

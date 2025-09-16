@@ -12,7 +12,11 @@ import {
   deleteform,
   checkSquareTransaction,
   takeScreenshot,
+  deletePageByName,
 } from './utils/formUtils.js';
+
+
+
 
 
 
@@ -43,14 +47,16 @@ test('$ Symbol Currency', async ({ page }) => {
 
 
   // Delete Page using utility function
-  await deletepage(page);
+  await deletePageByName(page, '$ Donation Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page);
+  await deleteform(page, 'Donation Payment Form');
 
   await takeScreenshot(page);
 
 });
+
+
 
 
 
@@ -89,6 +95,7 @@ test('Donation with Coupon + Redirection ($)', async ({ page }) => {
 
   // Add Page
   await addpage(page, shortcode, 'Donation with coupon page');
+ 
 
   // Submit Form with coupon + redirection params
   const submittedAmount = await submitDonationFormCustom(page, {
@@ -111,10 +118,12 @@ test('Donation with Coupon + Redirection ($)', async ({ page }) => {
 
 
   // Cleanup
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, 'Donation with coupon page');
+  await deleteform(page, 'Donation Payment Form');
   await takeScreenshot(page);
 });
+
+
 
 
 
@@ -148,14 +157,16 @@ test('USD Currency Symbol', async ({ page }) => {
 
   
   // Delete Page using utility function
-  await deletepage(page);
+  await deletePageByName(page, 'USD Donation Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page);
+  await deleteform(page, 'Donation Payment Form');
 
   await takeScreenshot(page);
 
 });
+
+
 
 
 
@@ -176,7 +187,7 @@ test('No Code Symbol', async ({ page }) => {
 
 
   // Add Page using utility function
-  await addpage(page, shortcode, 'No Symbol Donation Custom Page');
+    await addpage(page, shortcode, 'No Symbol Donation Custom Page');
 
 
   // Form Submit using utility function
@@ -188,10 +199,10 @@ test('No Code Symbol', async ({ page }) => {
 
   
   // Delete Page using utility function
-  await deletepage(page);
+  await deletePageByName(page, 'No Symbol Donation Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page);
+  await deleteform(page, 'Donation Payment Form');
 
   await takeScreenshot(page);
 

@@ -27,7 +27,7 @@ export const testConfig = {
     },
     minAmount: '10',
     maxAmount: '1000',
-    successMessage: 'Your Payment Successfully sent',
+    successMessage: 'Your Payment Successfully sent.',
     termsLabel: 'This is the terms and condition',
     termsUrl: 'www.google.com',
     termsUrl1: 'https://wpeasypay.com/documentation/'

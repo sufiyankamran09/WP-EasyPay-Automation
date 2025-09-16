@@ -14,6 +14,7 @@ import {
     deleteform,
     checkSquareTransaction,
     takeScreenshot,
+    deletePageByName,
   } from './utils/formUtils.js';
   
 
@@ -51,9 +52,12 @@ test('Click and capture screenshot after element appears', async ({ page }) => {
 
 });
 
+
+
 test('Check', async ({page}) => {
 
-    test.setTimeout(200000);
-
+    test.setTimeout(50000);
+    await loginToWordPress(page);
+    await deleteform(page, 'Subscription Payment Tabular');
 
 });

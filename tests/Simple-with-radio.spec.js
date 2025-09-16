@@ -9,6 +9,7 @@ import {
   deleteform,
   checkSquareTransaction,
   takeScreenshot,
+  deletePageByName,
 } from './utils/formUtils.js';
 
 
@@ -30,7 +31,7 @@ test('Simple form with radio layout with $', async ({ page }) => {
   expect(shortcode).toBeTruthy();
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, '$ Radio Form Page');
 
   // Submit form (Radio flow) and pay with $
   const submittedAmount1 = await submitFormRadio(page, { currency: 'dollar' });
@@ -40,8 +41,8 @@ test('Simple form with radio layout with $', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount1);
 
   // Cleanup (delete the created page and form)
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, '$ Radio Form Page');
+  await deleteform(page, 'Simple Payment Form');
   await takeScreenshot(page);
 });
 
@@ -66,7 +67,7 @@ test('Simple form with radio layout with USD', async ({ page }) => {
   expect(shortcode).toBeTruthy();
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, 'USD Radio Form Page');
 
   // Submit form (Radio flow) and pay with USD
   const submittedAmount2 = await submitFormRadio(page, { currency: 'usd' });
@@ -76,8 +77,8 @@ test('Simple form with radio layout with USD', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount2);
 
   // Cleanup (delete the created page and form)
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, 'USD Radio Form Page');
+  await deleteform(page, 'Simple Payment Form');
   await takeScreenshot(page);
 });
 
@@ -102,7 +103,7 @@ test('Simple form with radio layout with No code/symbol', async ({ page }) => {
   expect(shortcode).toBeTruthy();
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, 'No Code/Symbol Radio Form Page');
 
   // Submit form (Radio flow) expecting generic Pay button
   const submittedAmount3 = await submitFormRadio(page, { currency: 'none' });
@@ -112,8 +113,8 @@ test('Simple form with radio layout with No code/symbol', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount3);
 
   // Cleanup (delete the created page and form)
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, 'No Code/Symbol Radio Form Page');
+  await deleteform(page, 'Simple Payment Form');
 
   await takeScreenshot(page);
 });

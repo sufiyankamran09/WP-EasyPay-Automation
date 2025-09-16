@@ -10,6 +10,7 @@ import {
   deleteform,
   checkSquareTransaction,
   takeScreenshot,
+  deletePageByName,
 } from './utils/formUtils.js';
 
 //   Form creation  // 
@@ -44,7 +45,7 @@ test('$ Symbol Currency', async ({ page }) => {
   const shortcode = await createformCustom(page, { currency: 'dollar' });
 
    // Add Page using utility function
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, '$ Custom Page');
 
    // Form Submit using utility function
   const submittedAmount1 = await CustomFormSubmit(page, { currency: 'dollar' });
@@ -53,11 +54,11 @@ test('$ Symbol Currency', async ({ page }) => {
    await verifyPaymentSuccess(page);
    await checkSquareTransaction(page,submittedAmount1);
 
-   // Delete Page using utility function
-   await deletepage(page);
+   // Delete Page using utility function  
+   await deletePageByName(page, '$ Custom Page');
 
    // Delete Form using utility function
-   await deleteform(page);
+   await deleteform(page, 'Simple Payment Form');
    await takeScreenshot(page);
 
 });
@@ -79,7 +80,7 @@ test('USD Symbol Currency', async ({ page }) => {
   const shortcode = await createformCustom(page, { currency: 'usd' });
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, 'USD Custom Page');
 
   // Submit form expecting USD indicators
   const submittedAmount2 = await CustomFormSubmit(page, { currency: 'usd' });
@@ -89,8 +90,8 @@ test('USD Symbol Currency', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount2);
 
   // Cleanup
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, 'USD Custom Page');
+  await deleteform(page, 'Simple Payment Form');
 
   await takeScreenshot(page);
 
@@ -114,7 +115,7 @@ test('No Code/Symbol Currency', async ({ page }) => {
   const shortcode = await createformCustom(page, { currency: 'none' });
 
   // Add Page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, 'No Code/Symbol Custom Page');
 
   // Submit form expecting no currency indicator
   const submittedAmount3 = await CustomFormSubmit(page, { currency: 'none' });
@@ -124,8 +125,8 @@ test('No Code/Symbol Currency', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount3);
 
   // Cleanup
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, 'No Code/Symbol Custom Page');
+  await deleteform(page, 'Simple Payment Form');
   await takeScreenshot(page);
 
 });
@@ -154,7 +155,7 @@ test('$ Symbol Currency with Popup', async ({ page }) => {
   });
 
   // Add page with shortcode
-  await addpage(page, shortcode);
+  await addpage(page, shortcode, '$ Symbol Currency with Popup Custom Page');
 
   // Submit via popup + multistep
   const submittedAmount4 = await submitFormCustomPopupMultistep(page, {
@@ -167,8 +168,8 @@ test('$ Symbol Currency with Popup', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount4);
 
   // Cleanup
-  await deletepage(page);
-  await deleteform(page);
+  await deletePageByName(page, '$ Symbol Currency with Popup Custom Page');
+  await deleteform(page, 'Simple Payment Form');
   await takeScreenshot(page);
 
 });

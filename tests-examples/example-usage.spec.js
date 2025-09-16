@@ -6,7 +6,7 @@ import {
   Form_Submit, 
   deletepage, 
   deleteform 
-} from './utils/formUtils.js';
+} from '../tests/utils/formUtils.js';
 
 test.describe('WordPress Form Tests', () => {
   let shortcode;
