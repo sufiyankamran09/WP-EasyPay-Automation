@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { 
   loginToWordPress, 
   createformCustom,
@@ -50,7 +50,7 @@ test('$ Symbol Currency', async ({ page }) => {
   await deletePageByName(page, '$ Donation Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 
   await takeScreenshot(page);
 
@@ -119,7 +119,7 @@ test('Donation with Coupon + Redirection ($)', async ({ page }) => {
 
   // Cleanup
   await deletePageByName(page, 'Donation with coupon page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation with coupon');
   await takeScreenshot(page);
 });
 
@@ -160,7 +160,7 @@ test('USD Currency Symbol', async ({ page }) => {
   await deletePageByName(page, 'USD Donation Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 
   await takeScreenshot(page);
 
@@ -202,7 +202,7 @@ test('No Code Symbol', async ({ page }) => {
   await deletePageByName(page, 'No Symbol Donation Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 
   await takeScreenshot(page);
 

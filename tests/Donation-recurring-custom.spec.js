@@ -24,12 +24,12 @@ test('Donation Recurring with Custom Layout - $ Symbol', async ({ page }) => {
 
   // Login WP using utility function
   await loginToWordPress(page);
- 
+  
   // Create Form using existing utility function
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'dollar',
     layout: 'custom',
-    title: 'Donation with Recurring',
+    title: '$ Donation Recurring with Custom',
     description: 'This is the Donation Recurring Form',
     amount1: '1000',
     amount2: '2000',
@@ -61,7 +61,7 @@ test('Donation Recurring with Custom Layout - $ Symbol', async ({ page }) => {
   await deletePageByName(page, '$ Donation Recurring Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation with Recurring');
+  await deleteform(page, '$ Donation Recurring with Custom');
 
   await takeScreenshot(page);
 });
@@ -83,7 +83,7 @@ test('Donation Recurring with Custom Layout - USD Symbol', async ({ page }) => {
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'usd',
     layout: 'custom',
-    title: 'Donation with Recurring USD',
+    title: 'USD Donation Recurring with Custom',
     description: 'This is the Donation Recurring Form with USD',
     amount1: '1000',
     amount2: '2000',
@@ -94,7 +94,7 @@ test('Donation Recurring with Custom Layout - USD Symbol', async ({ page }) => {
   });
 
   // Add Page using utility function
-  await addpage(page, shortcode, 'Donation Recurring USD Custom Page');
+  await addpage(page, shortcode, 'USD Donation Recurring Custom Page');
 
   // Form Submit using utility function
   const submittedAmount2 = await submitDonationFormRecurring(page, { 
@@ -108,10 +108,10 @@ test('Donation Recurring with Custom Layout - USD Symbol', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount2);
 
   // Delete Page using utility function
-  await deletePageByName(page, 'Donation Recurring USD Custom Page');
+  await deletePageByName(page, 'USD Donation Recurring Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation with Recurring USD');
+  await deleteform(page, 'USD Donation Recurring with Custom');
 
   await takeScreenshot(page);
 });
@@ -133,7 +133,7 @@ test('Donation Recurring with Custom Layout - No Symbol', async ({ page }) => {
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'none',
     layout: 'custom',
-    title: 'Donation with Recurring No Symbol',
+    title: 'No Symbol Donation Recurring with Custom',
     description: 'This is the Donation Recurring Form with No Symbol',
     amount1: '1000',
     amount2: '2000',
@@ -144,7 +144,7 @@ test('Donation Recurring with Custom Layout - No Symbol', async ({ page }) => {
   });
 
   // Add Page using utility function
-  await addpage(page, shortcode, 'Donation Recurring No Symbol Custom Page');
+  await addpage(page, shortcode, 'No Symbol Donation Recurring Custom Page');
 
   // Form Submit using utility function
   const submittedAmount3 = await submitDonationFormRecurring(page, { 
@@ -158,10 +158,10 @@ test('Donation Recurring with Custom Layout - No Symbol', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount3);
 
   // Delete Page using utility function
-  await deletePageByName(page, 'Donation Recurring No Symbol Custom Page');
+  await deletePageByName(page, 'No Symbol Donation Recurring Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation with Recurring No Symbol');
+  await deleteform(page, 'No Symbol Donation Recurring with Custom');
 
   await takeScreenshot(page);
 });

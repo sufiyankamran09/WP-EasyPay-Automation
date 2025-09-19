@@ -1,8 +1,8 @@
 // Import necessary Playwright modules
-const { test, expect } = require('@playwright/test');
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
+import { test, expect } from '@playwright/test';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 import { 
     loginToWordPress, 
     createformCustom,

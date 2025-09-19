@@ -29,7 +29,7 @@ test('Subscription Payment with Dropdown Layout - $ Symbol', async ({ page }) =>
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'dollar',
     layout: 'dropdown',
-    title: 'Subscription Payment Dropdown',
+    title: '$ Subscription Dropdown Payment',
     description: 'This is the subscription Payment Dropdown Form',
     enableCoupon: true,
     options: [
@@ -60,7 +60,7 @@ test('Subscription Payment with Dropdown Layout - $ Symbol', async ({ page }) =>
   await deletePageByName(page, '$ Dropdown Subscription Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment Dropdown');
+  await deleteform(page, '$ Subscription Dropdown Payment');
 
   await takeScreenshot(page);
 });
@@ -83,7 +83,7 @@ test('Subscription Payment with Dropdown Layout - USD Symbol', async ({ page }) 
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'usd',
     layout: 'dropdown',
-    title: 'Subscription Payment Dropdown USD',
+    title: 'USD Subscription Dropdown Payment',
     description: 'This is the subscription Payment Dropdown Form USD',
     enableCoupon: true,
     options: [
@@ -114,7 +114,7 @@ test('Subscription Payment with Dropdown Layout - USD Symbol', async ({ page }) 
   await deletePageByName(page, 'USD Dropdown Subscription Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment Dropdown');
+  await deleteform(page, 'USD Subscription Dropdown Payment');
 
   await takeScreenshot(page);
 });
@@ -136,7 +136,7 @@ test('Subscription Payment with Dropdown Layout - No Symbol', async ({ page }) =
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'none',
     layout: 'dropdown',
-    title: 'Subscription Payment Dropdown No Symbol',
+    title: 'No Symbol Subscription Dropdown Payment',
     description: 'This is the subscription Payment Dropdown Form No Symbol',
     enableCoupon: true,
     options: [
@@ -167,7 +167,7 @@ test('Subscription Payment with Dropdown Layout - No Symbol', async ({ page }) =
     await deletePageByName(page, 'No Symbol Dropdown Subscription Page');
 
   // Delete Form using utility function 
-  await deleteform(page, 'Subscription Payment Dropdown');
+  await deleteform(page, 'No Symbol Subscription Dropdown Payment');
 
   await takeScreenshot(page);
 });

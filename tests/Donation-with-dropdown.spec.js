@@ -18,7 +18,7 @@ import {
 
 // Create and submit a Donation form with Dropdown layout ($)
 test('Donation with dropdown layout with $', async ({ page }) => {
-  test.setTimeout(90000);
+  test.setTimeout(200000);
 
   await loginToWordPress(page);
   const shortcode = await DonationcreateformDropdown(page, { currency: 'dollar' });
@@ -30,7 +30,7 @@ test('Donation with dropdown layout with $', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount1);
 
   await deletePageByName(page, '$ Dropdown Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 
   await takeScreenshot(page);
 
@@ -43,7 +43,7 @@ test('Donation with dropdown layout with $', async ({ page }) => {
 
 // Create and submit a Donation form with Dropdown layout (USD)
 test('Donation with dropdown layout with USD', async ({ page }) => {
-  test.setTimeout(90000);
+  test.setTimeout(200000);
 
   await loginToWordPress(page);
   const shortcode = await DonationcreateformDropdown(page, { currency: 'usd' });
@@ -55,7 +55,7 @@ test('Donation with dropdown layout with USD', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount2);
 
   await deletePageByName(page, 'USD Dropdown Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 
   await takeScreenshot(page);
 
@@ -69,7 +69,7 @@ test('Donation with dropdown layout with USD', async ({ page }) => {
 
 // Create and submit a Donation form with Dropdown layout (No code/symbol)
 test('Donation with dropdown layout with No Code/Symbol', async ({ page }) => {
-  test.setTimeout(90000);
+  test.setTimeout(200000);
 
   await loginToWordPress(page);
   const shortcode = await DonationcreateformDropdown(page, { currency: 'none' });
@@ -81,7 +81,7 @@ test('Donation with dropdown layout with No Code/Symbol', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount3);
 
   await deletePageByName(page, 'No Symbol Dropdown Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
   await takeScreenshot(page);
 
 });

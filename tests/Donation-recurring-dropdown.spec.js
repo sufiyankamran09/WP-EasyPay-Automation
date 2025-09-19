@@ -26,7 +26,7 @@ test('Donation Recurring with Dropdown Layout - $ Symbol', async ({ page }) => {
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'dollar',
     layout: 'dropdown',
-    title: 'Donation Recurring with Dropdown',
+    title: '$ Donation Recurring with Dropdown',
     description: 'This is the Donation Recurring with Payment Dropdown',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -57,7 +57,7 @@ test('Donation Recurring with Dropdown Layout - $ Symbol', async ({ page }) => {
   await deletePageByName(page, '$ Donation Recurring Dropdown Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Dropdown');
+  await deleteform(page, '$ Donation Recurring with Dropdown');
 
   await takeScreenshot(page);
 });
@@ -79,7 +79,7 @@ test('Donation Recurring with Dropdown Layout - USD Symbol', async ({ page }) =>
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'usd',
     layout: 'dropdown',
-    title: 'Donation Recurring with Dropdown USD',
+    title: 'USD Donation Recurring with Dropdown',
     description: 'This is the Donation Recurring with Payment Dropdown USD',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -92,7 +92,7 @@ test('Donation Recurring with Dropdown Layout - USD Symbol', async ({ page }) =>
   });
 
   // Add Page using utility function
-  await addpage(page, shortcode, 'USD Donation Recurring Dropdown Page');
+    await addpage(page, shortcode, 'USD Donation Recurring Dropdown Page');
 
   // Form Submit using utility function
   const submittedAmount2 = await submitDonationFormRecurring(page, { 
@@ -110,7 +110,7 @@ test('Donation Recurring with Dropdown Layout - USD Symbol', async ({ page }) =>
   await deletePageByName(page, 'USD Donation Recurring Dropdown Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Dropdown USD');
+  await deleteform(page, 'USD Donation Recurring with Dropdown');
 
   await takeScreenshot(page);
 });
@@ -132,7 +132,7 @@ test('Donation Recurring with Dropdown Layout - No Symbol', async ({ page }) => 
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'none',
     layout: 'dropdown',
-    title: 'Donation Recurring with Dropdown No Symbol',
+    title: 'No Symbol Donation Recurring with Dropdown',
     description: 'This is the Donation Recurring with Payment Dropdown No Symbol',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -163,7 +163,7 @@ test('Donation Recurring with Dropdown Layout - No Symbol', async ({ page }) => 
   await deletePageByName(page, 'No Symbol Donation Recurring Dropdown Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Dropdown No Symbol');
+  await deleteform(page, 'No Symbol Donation Recurring with Dropdown');
 
   await takeScreenshot(page);
 });

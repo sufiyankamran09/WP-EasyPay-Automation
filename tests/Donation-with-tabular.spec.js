@@ -28,7 +28,7 @@ test('Donation with tabular layout with $', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount1);
 
   await deletePageByName(page, '$ Tabular Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
   await takeScreenshot(page);
 });
 
@@ -48,7 +48,7 @@ test('Donation with tabular layout with USD', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount2);
 
   await deletePageByName(page, 'USD Tabular Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
   await takeScreenshot(page);
 });
 
@@ -69,7 +69,7 @@ test('Donation with tabular layout with No Code/Symbol', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount3);
 
   await deletePageByName(page, 'No Symbol Tabular Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
   await takeScreenshot(page);
 });
 

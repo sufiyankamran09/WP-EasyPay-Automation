@@ -28,7 +28,7 @@ test('Subscription Payment with Radio Layout - $ Symbol', async ({ page }) => {
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'dollar',
     layout: 'radio',
-    title: 'Subscription Payment Radio',
+    title: '$ Subscription Radio Payment',
     description: 'This is the subscription Payment Radio Form',
     enableCoupon: true,
     options: [
@@ -40,7 +40,7 @@ test('Subscription Payment with Radio Layout - $ Symbol', async ({ page }) => {
   });
 
   // Add Page using utility function
-  await addpage(page, shortcode, 'Subscription Radio Page');
+  await addpage(page, shortcode, '$ Subscription Radio Page');
 
   // Form Submit using utility function
   const submittedAmount1 = await submitSubscriptionForm(page, { 
@@ -55,10 +55,10 @@ test('Subscription Payment with Radio Layout - $ Symbol', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount1);
 
   // Delete Page using utility function
-  await deletePageByName(page, 'Subscription Radio Page');
+  await deletePageByName(page, '$ Subscription Radio Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment Radio');
+  await deleteform(page, '$ Subscription Radio Payment');
 
   await takeScreenshot(page);
 });
@@ -80,7 +80,7 @@ test('Subscription Payment with Radio Layout - USD Symbol', async ({ page }) => 
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'usd',
     layout: 'radio',
-    title: 'Subscription Payment Radio USD',
+    title: 'USD Subscription Radio Payment',
     description: 'This is the subscription Payment Radio Form USD',
     enableCoupon: true,
     options: [
@@ -110,7 +110,7 @@ test('Subscription Payment with Radio Layout - USD Symbol', async ({ page }) => 
   await deletePageByName(page, 'USD Subscription Radio Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment Radio');
+  await deleteform(page, 'USD Subscription Radio Payment');
 
   await takeScreenshot(page);
 });
@@ -132,7 +132,7 @@ test('Subscription Payment with Radio Layout - No Symbol', async ({ page }) => {
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'none',
     layout: 'radio',
-    title: 'Subscription Payment Radio No Symbol',
+    title: 'No Symbol Subscription Radio Payment',
     description: 'This is the subscription Payment Radio Form No Symbol',
     enableCoupon: true,
     options: [
@@ -162,7 +162,7 @@ test('Subscription Payment with Radio Layout - No Symbol', async ({ page }) => {
   await deletePageByName(page, 'No Symbol Subscription Radio Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment Radio');
+  await deleteform(page, 'No Symbol Subscription Radio Payment');
 
   await takeScreenshot(page);
 });

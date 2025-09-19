@@ -27,7 +27,7 @@ test('Subscription Payment with Custom Layout - $ Symbol', async ({ page }) => {
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'dollar',
     layout: 'custom',
-    title: 'Subscription Payment',
+    title: '$ Subscription Custom Payment',
     description: 'This is the subscription Payment Form',
     enableCoupon: true,
     amount1: '1000',
@@ -39,7 +39,7 @@ test('Subscription Payment with Custom Layout - $ Symbol', async ({ page }) => {
   });
 
   // Add Page using utility function
-  await addpage(page, shortcode, 'Subscription Custom Page');
+  await addpage(page, shortcode, '$ Subscription Custom Page');
 
   // Form Submit using utility function
   const submittedAmount1 = await submitSubscriptionForm(page, { 
@@ -57,7 +57,7 @@ test('Subscription Payment with Custom Layout - $ Symbol', async ({ page }) => {
   await deletePageByName(page, '$ Subscription Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment');
+  await deleteform(page, '$ Subscription Custom Payment');
 
   await takeScreenshot(page);
 });
@@ -79,7 +79,7 @@ test('Subscription Payment with Custom Layout - USD Symbol', async ({ page }) =>
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'usd',
     layout: 'custom',
-    title: 'Subscription Payment USD',
+    title: 'USD Subscription Custom Payment',
     description: 'This is the subscription Payment Form USD',
     enableCoupon: true,
     amount1: '1000',
@@ -109,7 +109,7 @@ test('Subscription Payment with Custom Layout - USD Symbol', async ({ page }) =>
   await deletePageByName(page, 'USD Subscription Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment');
+  await deleteform(page, 'USD Subscription Custom Payment');
 
   await takeScreenshot(page);
 });
@@ -133,7 +133,7 @@ test('Subscription Payment with Custom Layout - No Symbol', async ({ page }) => 
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'none',
     layout: 'custom',
-    title: 'Subscription Payment No Symbol',
+    title: 'No Symbol Subscription Custom Payment',
     description: 'This is the subscription Payment Form No Symbol',
     enableCoupon: true,
     amount1: '1000',
@@ -163,7 +163,7 @@ test('Subscription Payment with Custom Layout - No Symbol', async ({ page }) => 
   await deletePageByName(page, 'No Symbol Subscription Custom Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment');
+  await deleteform(page, 'No Symbol Subscription Custom Payment');
 
   await takeScreenshot(page);
 });

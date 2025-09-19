@@ -28,7 +28,7 @@ test('Donation Recurring with Tabular Layout - $ Symbol', async ({ page }) => {
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'dollar',
     layout: 'tabular',
-    title: 'Donation Recurring with Tabular',
+    title: '$ Donation Recurring with Tabular',
     description: 'This is the Donation Recurring with Payment Tabular',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -57,7 +57,7 @@ test('Donation Recurring with Tabular Layout - $ Symbol', async ({ page }) => {
   await deletePageByName(page, '$ Donation Recurring Tabular Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Tabular');
+  await deleteform(page, '$ Donation Recurring with Tabular');
 
   await takeScreenshot(page);
 });
@@ -81,7 +81,7 @@ test('Donation Recurring with Tabular Layout - USD Symbol', async ({ page }) => 
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'usd',
     layout: 'tabular',
-    title: 'Donation Recurring with Tabular USD',
+    title: 'USD Donation Recurring with Tabular',
     description: 'This is the Donation Recurring with Payment Tabular USD',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -110,7 +110,7 @@ test('Donation Recurring with Tabular Layout - USD Symbol', async ({ page }) => 
   await deletePageByName(page, 'USD Donation Recurring Tabular Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Tabular USD');
+  await deleteform(page, 'USD Donation Recurring with Tabular');
 
   await takeScreenshot(page);
 });
@@ -137,7 +137,7 @@ test('Donation Recurring with Tabular Layout - No Symbol', async ({ page }) => {
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'none',
     layout: 'tabular',
-    title: 'Donation Recurring with Tabular No Symbol',
+    title: 'No Symbol Donation Recurring with Tabular',
     description: 'This is the Donation Recurring with Payment Tabular No Symbol',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -166,7 +166,7 @@ test('Donation Recurring with Tabular Layout - No Symbol', async ({ page }) => {
   await deletePageByName(page, 'No Symbol Donation Recurring Tabular Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Tabular No Symbol');
+  await deleteform(page, 'No Symbol Donation Recurring with Tabular');
 
   await takeScreenshot(page);
 });

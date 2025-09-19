@@ -28,7 +28,7 @@ test('Subscription Payment with Tabular Layout - $ Symbol', async ({ page }) => 
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'dollar',
     layout: 'tabular',
-    title: 'Subscription Payment Tabular',
+    title: '$ Subscription Payment Tabular',
     description: 'This is the subscription Payment Tabular Form',
     enableCoupon: true,
     options: [
@@ -57,7 +57,7 @@ test('Subscription Payment with Tabular Layout - $ Symbol', async ({ page }) => 
   await deletePageByName(page, '$ Subscription Tabular Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment Tabular');
+  await deleteform(page, '$ Subscription Payment Tabular');
 
   await takeScreenshot(page);
 });
@@ -81,7 +81,7 @@ test('Subscription Payment with Tabular Layout - USD Symbol', async ({ page }) =
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'usd',
     layout: 'tabular',
-    title: 'Subscription Payment Tabular USD',
+    title: 'USD Subscription Payment Tabular',
     description: 'This is the subscription Payment Tabular Form USD',
     enableCoupon: true,
     options: [
@@ -111,7 +111,7 @@ test('Subscription Payment with Tabular Layout - USD Symbol', async ({ page }) =
 
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment Tabular USD');
+  await deleteform(page, 'USD Subscription Payment Tabular');
 
   await takeScreenshot(page);
 });
@@ -135,7 +135,7 @@ test('Subscription Payment with Tabular Layout - No Symbol', async ({ page }) =>
   const shortcode = await Subscriptioncreateform(page, { 
     currency: 'none',
     layout: 'tabular',
-    title: 'Subscription Payment Tabular No Symbol',
+    title: 'No Symbol Subscription Payment Tabular',
     description: 'This is the subscription Payment Tabular Form No Symbol',
     enableCoupon: true,
     options: [
@@ -165,7 +165,7 @@ test('Subscription Payment with Tabular Layout - No Symbol', async ({ page }) =>
   await deletePageByName(page, 'No Symbol Subscription Tabular Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Subscription Payment Tabular No Symbol');
+  await deleteform(page, 'No Symbol Subscription Payment Tabular');
 
   await takeScreenshot(page);
 });

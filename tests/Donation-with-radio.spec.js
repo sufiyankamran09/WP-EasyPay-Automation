@@ -28,7 +28,7 @@ test('Donation with radio layout with $', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount1);
 
   await deletePageByName(page, '$ Radio Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 });
 
 
@@ -49,7 +49,7 @@ test('Donation with radio layout with USD', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount2);
 
   await deletePageByName(page, 'USD Radio Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 });
 
 
@@ -72,7 +72,7 @@ test('Donation with radio layout with No Code/Symbol', async ({ page }) => {
   await checkSquareTransaction(page, submittedAmount3);
 
   await deletePageByName(page, 'No Code/Symbol Radio Form Page');
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 });
 
 

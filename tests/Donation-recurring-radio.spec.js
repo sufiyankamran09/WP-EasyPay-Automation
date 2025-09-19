@@ -27,7 +27,7 @@ test('Donation Recurring with Radio Layout - $ Symbol', async ({ page }) => {
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'dollar',
     layout: 'radio',
-    title: 'Donation Recurring with Radio',
+    title: '$ Donation Recurring with Radio',
     description: 'This is the Donation Recurring with Payment Radio',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -57,7 +57,7 @@ test('Donation Recurring with Radio Layout - $ Symbol', async ({ page }) => {
   await deletePageByName(page, '$ Donation Recurring Radio Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Radio');
+  await deleteform(page, '$ Donation Recurring with Radio');
 
   await takeScreenshot(page);
 });
@@ -81,7 +81,7 @@ test('Donation Recurring with Radio Layout - USD Symbol', async ({ page }) => {
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'usd',
     layout: 'radio',
-    title: 'Donation Recurring with Radio USD',
+    title: 'USD Donation Recurring with Radio',
     description: 'This is the Donation Recurring with Payment Radio USD',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -111,7 +111,7 @@ test('Donation Recurring with Radio Layout - USD Symbol', async ({ page }) => {
     await deletePageByName(page, 'USD Donation Recurring Radio Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Radio USD');
+  await deleteform(page, 'USD Donation Recurring with Radio');
 
   await takeScreenshot(page);
 });
@@ -134,7 +134,7 @@ test('Donation Recurring with Radio Layout - No Symbol', async ({ page }) => {
   const shortcode = await DonationcreateformRecurring(page, { 
     currency: 'none',
     layout: 'radio',
-    title: 'Donation Recurring with Radio No Symbol',
+    title: 'No Symbol Donation Recurring with Radio',
     description: 'This is the Donation Recurring with Payment Radio No Symbol',
     subscriptionCycle: 'WEEKLY',
     subscriptionLength: '2',
@@ -164,7 +164,7 @@ test('Donation Recurring with Radio Layout - No Symbol', async ({ page }) => {
   await deletePageByName(page, 'No Symbol Donation Recurring Radio Page');
 
   // Delete Form using utility function
-  await deleteform(page, 'Donation Recurring with Radio No Symbol');
+  await deleteform(page, 'No Symbol Donation Recurring with Radio');
 
   await takeScreenshot(page);
 });

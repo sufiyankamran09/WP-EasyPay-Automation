@@ -8,7 +8,7 @@ import {
   DonationcreateformCustom,
   submitDonationFormCustom,
   checkSquareTransaction,
-} from './utils/formUtils.js';
+} from '../tests/utils/formUtils.js';
 
 // Test donation form with Square verification
 test('Donation with Square verification', async ({ page }) => {
@@ -44,7 +44,7 @@ test('Donation with Square verification', async ({ page }) => {
 
   // Cleanup
   await deletepage(page);
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 });
 
 // Test with manual Square check
@@ -68,5 +68,5 @@ test('Donation with manual Square check', async ({ page }) => {
   console.log('Square verification result:', squareResult);
   
   await deletepage(page);
-  await deleteform(page, 'Donation Payment Form');
+  await deleteform(page, 'Donation Form');
 });

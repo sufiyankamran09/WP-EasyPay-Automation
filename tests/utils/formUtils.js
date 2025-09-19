@@ -1,8 +1,8 @@
 import { expect } from '@playwright/test';
 import { testConfig } from '../config/testConfig.js';
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 
 
 
@@ -23,7 +23,7 @@ export async function loginToWordPress(page, username = null, password = null) {
   await expect(page.getByRole('link', { name: 'WP EASY PAY', exact: true })).toBeVisible();
   const text = await page.locator('#toplevel_page_edit-post_type-wp_easy_pay').textContent();
   const textprint = text.trim();
- console.log(`WP Easy Pay text content: ${textprint}`);
+  console.log(`WP Easy Pay text content: ${textprint}`);
 
 } 
 
@@ -1867,6 +1867,9 @@ export async function deletePageByName(page, pageName) {
   while (pageExists) {
     const pageLink = page.locator(`//a[normalize-space()='${pageName}']`).first();
     if (await pageLink.count() > 0) {
+      console.log("Page exists and will be deleted");
+      console.log("Page name: ", pageName);
+      await page.waitForTimeout(1000);
       await pageLink.hover();
       await page.waitForTimeout(2000);
       await page.locator(`//a[contains(@aria-label, 'Move') and contains(@aria-label, '${pageName}') and contains(@aria-label, 'Trash')]`).first().click();
@@ -1900,15 +1903,6 @@ export async function deletepage(page) {
 
 
 
- // Function to delete a form
-// export async function deleteform(page) {
-   //delete for first form only //
-//   await page.goto(testConfig.urls.forms);
-//   await page.locator("(//a[@title='Delete form'][normalize-space()='Delete'])[1]").click();
-//   await page.getByRole('button', { name: 'Delete' }).click();
-//   await page.getByRole('button', { name: 'Delete' }).click();
-//   console.log("The Form has been successfully deleted.");
-// }
 
 
 
@@ -1950,7 +1944,6 @@ export async function deleteform(page, formName = null) {
     console.log("All forms have been successfully deleted.");
   }
 }
-
 
 
 

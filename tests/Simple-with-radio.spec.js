@@ -25,7 +25,7 @@ test('Simple form with radio layout with $', async ({ page }) => {
   // Create Form (Radio layout) with $ currency
   const shortcode = await createFormRadio(page, {
     currency: 'dollar',
-    title: 'Radio Form',
+    title: '$ Simple Radio Form',
     description: 'This is the Radio form payment',
   });
   expect(shortcode).toBeTruthy();
@@ -42,7 +42,7 @@ test('Simple form with radio layout with $', async ({ page }) => {
 
   // Cleanup (delete the created page and form)
   await deletePageByName(page, '$ Radio Form Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, '$ Simple Radio Form');
   await takeScreenshot(page);
 });
 
@@ -61,7 +61,7 @@ test('Simple form with radio layout with USD', async ({ page }) => {
   // Create Form (Radio layout) with USD currency
   const shortcode = await createFormRadio(page, {
     currency: 'usd',
-    title: 'Radio Form',
+    title: 'USD Simple Radio Form',
     description: 'This is the Radio form payment',
   });
   expect(shortcode).toBeTruthy();
@@ -78,7 +78,7 @@ test('Simple form with radio layout with USD', async ({ page }) => {
 
   // Cleanup (delete the created page and form)
   await deletePageByName(page, 'USD Radio Form Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, 'USD Simple Radio Form');
   await takeScreenshot(page);
 });
 
@@ -97,7 +97,7 @@ test('Simple form with radio layout with No code/symbol', async ({ page }) => {
   // Create Form (Radio layout) with no code/symbol
   const shortcode = await createFormRadio(page, {
     currency: 'none',
-    title: 'Radio Form',
+    title: 'No Symbol Simple Radio Form',
     description: 'This is the Radio form payment',
   });
   expect(shortcode).toBeTruthy();
@@ -114,7 +114,7 @@ test('Simple form with radio layout with No code/symbol', async ({ page }) => {
 
   // Cleanup (delete the created page and form)
   await deletePageByName(page, 'No Code/Symbol Radio Form Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, 'No Symbol Simple Radio Form');
 
   await takeScreenshot(page);
 });

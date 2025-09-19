@@ -26,7 +26,7 @@ test('Simple form with tabular layout with $', async ({ page }) => {
     // Create Form (Tabular layout) with $ currency
     const shortcode = await createFormTabular(page, {
       currency: 'dollar',
-      title: 'Tabular Form',
+      title: '$ Simple Tabular Form',
       description: 'This is the Tabular form payment',
     });
     expect(shortcode).toBeTruthy();
@@ -43,7 +43,7 @@ test('Simple form with tabular layout with $', async ({ page }) => {
   
     // Cleanup (delete the created page and form)
     await deletePageByName(page, '$ Tabular Form Page');
-    await deleteform(page, 'Simple Payment Form');
+    await deleteform(page, '$ Simple Tabular Form');
     await takeScreenshot(page);
   });
 
@@ -63,7 +63,7 @@ test('Simple form with tabular layout with USD', async ({ page }) => {
     // Create Form (Tabular layout) with USD currency
     const shortcode = await createFormTabular(page, {
       currency: 'usd',
-      title: 'Tabular Form',
+      title: 'USD Simple Tabular Form',
       description: 'This is the Tabular form payment',
     });
     expect(shortcode).toBeTruthy();
@@ -80,7 +80,7 @@ test('Simple form with tabular layout with USD', async ({ page }) => {
   
     // Cleanup (delete the created page and form)
     await deletePageByName(page, 'USD Tabular Form Page');
-    await deleteform(page, 'Simple Payment Form');
+    await deleteform(page, 'USD Simple Tabular Form');
     
     await takeScreenshot(page);
   });
@@ -102,7 +102,7 @@ test('Simple form with tabular layout with No Code/Symbol', async ({ page }) => 
   // Create Form (Tabular layout) with no code/symbol
   const shortcode = await createFormTabular(page, {
     currency: 'none',
-    title: 'Tabular Form',
+    title: 'No Symbol Simple Tabular Form',
     description: 'This is the Tabular form payment',
   });
   expect(shortcode).toBeTruthy();
@@ -119,7 +119,7 @@ test('Simple form with tabular layout with No Code/Symbol', async ({ page }) => 
 
   // Cleanup (delete the created page and form)
   await deletePageByName(page, 'No Code/Symbol Tabular Form Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, 'No Symbol Simple Tabular Form');
   await takeScreenshot(page);
 });
 

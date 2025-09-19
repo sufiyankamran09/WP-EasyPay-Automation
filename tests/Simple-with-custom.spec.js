@@ -50,7 +50,7 @@ test('$ Symbol Currency', async ({ page }) => {
    // Form Submit using utility function
   const submittedAmount1 = await CustomFormSubmit(page, { currency: 'dollar' });
 
-  // // Verify payment success using utility function
+  // Verify payment success using utility function
    await verifyPaymentSuccess(page);
    await checkSquareTransaction(page,submittedAmount1);
 
@@ -58,7 +58,7 @@ test('$ Symbol Currency', async ({ page }) => {
    await deletePageByName(page, '$ Custom Page');
 
    // Delete Form using utility function
-   await deleteform(page, 'Simple Payment Form');
+   await deleteform(page, 'Simple Form');
    await takeScreenshot(page);
 
 });
@@ -91,7 +91,7 @@ test('USD Symbol Currency', async ({ page }) => {
 
   // Cleanup
   await deletePageByName(page, 'USD Custom Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, 'Simple Form');
 
   await takeScreenshot(page);
 
@@ -126,7 +126,7 @@ test('No Code/Symbol Currency', async ({ page }) => {
 
   // Cleanup
   await deletePageByName(page, 'No Code/Symbol Custom Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, 'Simple Form');
   await takeScreenshot(page);
 
 });
@@ -169,7 +169,7 @@ test('$ Symbol Currency with Popup', async ({ page }) => {
 
   // Cleanup
   await deletePageByName(page, '$ Symbol Currency with Popup Custom Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, 'Simple Form');
   await takeScreenshot(page);
 
 });

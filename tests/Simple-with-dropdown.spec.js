@@ -24,13 +24,13 @@ test('Simple form with dropdown layout with $', async ({ page }) => {
   // Create Form (Dropdown layout) with $ currency
   const shortcode = await createFormDropdown(page, {
     currency: 'dollar',
-    title: 'New Form',
+    title: '$ Simple Dropdown Form',
     description: 'New form here with layout Dropdown',
   });
   expect(shortcode).toBeTruthy();
 
   // Add Page with shortcode
-  await addpage(page, shortcode, '$ Dropdown Form Page');
+  await addpage(page, shortcode, '$ Dropdown Form Page'); 
 
   // Submit form (Dropdown flow) and pay with $
   const submittedAmount1 = await submitFormDropdown(page, { currency: 'dollar' });
@@ -41,7 +41,7 @@ test('Simple form with dropdown layout with $', async ({ page }) => {
 
   // Cleanup (delete the created page and form)
   await deletePageByName(page, '$ Dropdown Form Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, '$ Simple Dropdown Form');
   await takeScreenshot(page);
 
 });
@@ -62,7 +62,7 @@ test('Simple form with dropdown layout with USD', async ({ page }) => {
   // Create Form (Dropdown layout) with USD currency (no symbol selection step)
   const shortcode = await createFormDropdown(page, {
     currency: 'usd',
-    title: 'New Form',
+    title: 'USD Simple Dropdown Form',
     description: 'New form here with layout Dropdown',
   });
   expect(shortcode).toBeTruthy();
@@ -79,7 +79,7 @@ test('Simple form with dropdown layout with USD', async ({ page }) => {
 
   // Cleanup (delete the created page and form)
   await deletePageByName(page, 'USD Dropdown Form Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, 'USD Simple Dropdown Form');
   await takeScreenshot(page);
 
 });
@@ -99,7 +99,7 @@ test('Simple form with dropdown layout with No code/symbol', async ({ page }) =>
   // Create Form (Dropdown layout) with no code/symbol
   const shortcode = await createFormDropdown(page, {
     currency: 'none',
-    title: 'New Form',
+    title: 'No Symbol Simple Dropdown Form',
     description: 'New form here with layout Dropdown',
   });
   expect(shortcode).toBeTruthy();
@@ -116,7 +116,7 @@ test('Simple form with dropdown layout with No code/symbol', async ({ page }) =>
 
   // Cleanup (delete the created page and form)
   await deletePageByName(page, 'No Code/Symbol Dropdown Form Page');
-  await deleteform(page, 'Simple Payment Form');
+  await deleteform(page, 'No Symbol Simple Dropdown Form');
   await takeScreenshot(page);
 
 });
