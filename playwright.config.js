@@ -38,20 +38,27 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
+      headless: true,
       viewport: { width: 1515, height: 1100 },
-        
-       },
+      
+    },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'],
+      headless: true,
+      viewport: { width: 1515, height: 1100 },
+      },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'],
+      headless: true,
+      viewport: { width: 1515, height: 1100 },
+      },
+    },
 
     /* Test against mobile viewports. */
     // {
@@ -64,10 +71,13 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
+    {
+      name: 'Microsoft Edge',
+      use: { ...devices['Desktop Edge'], channel: 'msedge',
+      viewport: { width: 1515, height: 1100 },
+      headless: true,
+      },
+    },
     // {
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },

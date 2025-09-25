@@ -34,7 +34,7 @@ export async function loginToWordPress(page, username = null, password = null) {
 
 // Function to create a payment form
 export async function createformCustom(page, options = {}) {
-  const { currency, openInPopup, showMultistep, popupButtonTitle } = options; // currency required; others optional
+  const { currency, title = 'Simple Form', description = 'This is a simple form', openInPopup, showMultistep, termsUrl = 'www.google.com',  popupButtonTitle } = options; // currency required; others optional
 
   await page.getByRole('link', { name: 'WP EASY PAY', exact: true }).click();
   await page.getByLabel('Main menu', { exact: true }).getByRole('link', { name: 'Create Payment Form' }).click();
@@ -49,9 +49,9 @@ export async function createformCustom(page, options = {}) {
   }
 
   await page.getByRole('textbox', { name: 'please enter title' }).click();
-  await page.getByRole('textbox', { name: 'please enter title' }).fill(testConfig.formData.title);
+  await page.getByRole('textbox', { name: 'please enter title' }).fill(title);
   await page.getByRole('textbox', { name: 'Please Enter description' }).click();
-  await page.getByRole('textbox', { name: 'Please Enter description' }).fill(testConfig.formData.description);
+  await page.getByRole('textbox', { name: 'Please Enter description' }).fill(description);
 
   if (openInPopup && popupButtonTitle) {
     await page.getByRole('textbox', { name: 'please enter button title' }).click();
@@ -79,7 +79,7 @@ export async function createformCustom(page, options = {}) {
   await page.getByRole('textbox', { name: 'Please Enter Label' }).click();
   await page.getByRole('textbox', { name: 'Please Enter Label' }).fill(testConfig.formData.termsLabel);
   await page.getByRole('textbox', { name: 'Please Enter url for user' }).click();
-  await page.getByRole('textbox', { name: 'Please Enter url for user' }).fill(testConfig.formData.termsUrl);
+  await page.getByRole('textbox', { name: 'Please Enter url for user' }).fill(termsUrl);
 
   const shortcode = await page.locator("h4").textContent();
   console.log(shortcode);
@@ -232,7 +232,7 @@ export async function createFormTabular(page, options = {}) {
   await page.getByText('Form settings').click();
   await page.getByRole('textbox', { name: 'please enter title' }).fill(title);
   await page.getByRole('textbox', { name: 'Please Enter description' }).fill(description);
-
+  await page.waitForTimeout(1000);
   await page.locator('select[name="wpep_square_amount_type"]').selectOption('payment_tabular');
   await page.getByRole('checkbox', { name: 'Enable save card for future' }).check();
   await page.waitForTimeout(1000);
@@ -807,7 +807,10 @@ export async function Subscriptioncreateform(page, options = {}) {
 
   await page.getByRole('link', { name: 'WP EASY PAY', exact: true }).click();
   await page.getByLabel('Main menu', { exact: true }).getByRole('link', { name: 'Create Payment Form' }).click();
+  await page.waitForTimeout(2000);
+  await page.getByText('Square account settings').click();
   await page.getByRole('checkbox', { name: 'Use Global Settings' }).check();
+  await page.waitForTimeout(2000);
   await page.getByText('Form settings').click();
 
   await page.getByRole('textbox', { name: 'please enter title' }).click();
@@ -984,18 +987,21 @@ export async function addpage(page, shortcode, title = 'Sufiyan') {
 // Function to submit form
 export async function CustomFormSubmit(page, options = {}) {
   const { currency } = options; // required: 'dollar' | 'usd' | 'none'
-
+  await page.waitForTimeout(2000);
   await page.locator('input[name="wpep-first-name-field"]').click();
   await page.locator('input[name="wpep-first-name-field"]').fill(testConfig.paymentData.firstName);
+  await page.waitForTimeout(1000);
   await page.locator('input[name="wpep-last-name-field"]').click();
   await page.locator('input[name="wpep-last-name-field"]').fill(testConfig.paymentData.lastName);
+  await page.waitForTimeout(1000);
   await page.locator('input[name="wpep-email-field"]').click();
   await page.locator('input[name="wpep-email-field"]').fill(testConfig.paymentData.email);
   await page.waitForTimeout(1000);
-  await page.getByText('Other').click();
-  await page.getByPlaceholder('Enter your amount 10 -').click();
-  await page.waitForTimeout(2000);
-  await page.getByPlaceholder('Enter your amount 10 -').fill(testConfig.paymentData.amount);
+  await page.getByText("Other").click();
+  const otherAmountInput = page.locator('[placeholder^="Enter your amount"]');
+  await otherAmountInput.click();
+  await page.waitForTimeout(1000);
+  await otherAmountInput.fill(testConfig.paymentData.amount);
   await page.locator('//iframe[@title="Secure Credit Card Form"]').contentFrame().getByRole('textbox', { name: 'Card number' }).fill(testConfig.paymentData.cardNumber);
   await page.waitForTimeout(2000);
   await page.locator('//iframe[@title="Secure Credit Card Form"]').contentFrame().getByRole('textbox', { name: 'MM/YY' }).fill(testConfig.paymentData.expiry);
@@ -1010,7 +1016,7 @@ export async function CustomFormSubmit(page, options = {}) {
     await expect(page.getByRole('button', { name: 'Pay $' })).toBeVisible();
     const amountSymbol = await page.locator('small.display[id^="amount_display_"]').first().textContent();
     submittedAmount = amountSymbol;
-    console.log(amountSymbol);
+    console.log(`This is the Total Amount : ${amountSymbol}`);
     const amountLocator = page.locator('small.display[id^="amount_display_"]');
     await expect(amountLocator).not.toContainText('USD');
     await expect(amountLocator).toContainText('$');
@@ -1067,7 +1073,7 @@ export async function submitFormCustomPopupMultistep(page, options = {}) {
   await page.locator('input[name="wpep-last-name-field"]').fill('Sufiyan');
   await page.locator('input[name="wpep-email-field"]').click();
   await page.locator('input[name="wpep-email-field"]').fill('sufi@09.com');
-
+  await page.waitForTimeout(2000);
   await page.getByRole('link', { name: 'Next' }).click();
   await page.getByText('Other').click();
   await page.getByPlaceholder('Enter your amount 10 -').click();
@@ -1088,7 +1094,7 @@ export async function submitFormCustomPopupMultistep(page, options = {}) {
     const amount = page.locator('small.display[id^="amount_display_"]').first();
     const amountSymbol = await amount.textContent();
     submittedAmount = amountSymbol;
-    console.log(amountSymbol);
+    console.log(`This is the Total Amount : ${amountSymbol}`);
     await expect(amount).not.toContainText('USD');
     await expect(amount).toContainText('$');
     await page.getByRole('button', { name: 'Pay $' }).click();
@@ -1129,7 +1135,7 @@ export async function submitFormCustomPopupMultistep(page, options = {}) {
 
 export async function submitFormDropdown(page, options = {}) {
 	const { currency } = options;
-
+  await page.waitForTimeout(2000);
 	await page.locator('input[name="wpep-first-name-field"]').click();
 	await page.locator('input[name="wpep-first-name-field"]').fill('Muhammad');
 	await page.locator('input[name="wpep-last-name-field"]').click();
@@ -1157,7 +1163,7 @@ export async function submitFormDropdown(page, options = {}) {
       const amount = page.locator('small.display[id^="amount_display_"]').first();
       const amountSymbol = await amount.textContent();
       submittedAmount = amountSymbol;
-      console.log(amountSymbol);
+      console.log(`This is the Total Amount : ${amountSymbol}`);
       await page.getByRole('button', { name: 'Pay $' }).click();
       await page.waitForTimeout(3000);
     } else if (currency === 'usd') {
@@ -1190,7 +1196,7 @@ export async function submitFormDropdown(page, options = {}) {
 // Submit: Radio
 export async function submitFormRadio(page, options = {}) {
 	const { currency } = options;
-
+  await page.waitForTimeout(2000);
 	await page.locator('input[name="wpep-first-name-field"]').click();
 	await page.locator('input[name="wpep-first-name-field"]').fill('Muhammad');
 	await page.locator('input[name="wpep-last-name-field"]').click();
@@ -1319,7 +1325,7 @@ export async function submitFormTabular(page, options = {}) {
 export async function submitDonationFormCustom(page, options = {}) {
   const { currency, otherAmount = '15000', couponCode, saveCard = false } = options;
 
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(3000);
   await page.locator('input[name="wpep-first-name-field"]').click();
   await page.locator('input[name="wpep-first-name-field"]').fill('Sufiyan');
   await page.locator('input[name="wpep-last-name-field"]').click();
@@ -1722,7 +1728,7 @@ export async function submitSubscriptionForm(page, options = {}) {
     selectedOption = 'Mobile', 
     secondOption = 'Bike',
     otherAmount = '9500',
-    couponCode = 'Suf123'
+    couponCode = null // No default coupon code
   } = options;
 
   await page.waitForTimeout(5000);
@@ -1846,7 +1852,7 @@ export async function verifyPaymentSuccess(page) {
   await expect(page.getByText('Your Payment Successfully sent.')).toBeVisible({ timeout: 2000 });
   await expect(page.locator('fieldset')).toContainText('Payment Successful');
   await expect(page.locator('fieldset')).toContainText('Your Payment Successfully sent.');
-  console.log("Your Successfully Sent.")
+  console.log("Your Payment is Successfully Sent.  ")
 }
 
 
@@ -1859,20 +1865,26 @@ export async function verifyPaymentSuccess(page) {
 // Function to delete a page by name
 export async function deletePageByName(page, pageName) {
   await page.goto(testConfig.urls.pages);
-  
+  await page.waitForTimeout(1000);
 
   
   // Delete all pages with the same name by finding and deleting them one by one
+  const allPageLinks = page.locator(`//a[normalize-space()='${pageName}']`);
+  const totalPageCount = await allPageLinks.count();
+  console.log(`Total pages found with name '${pageName}': ${totalPageCount}`);
+  
   let pageExists = true;
   while (pageExists) {
-    const pageLink = page.locator(`//a[normalize-space()='${pageName}']`).first();
-    if (await pageLink.count() > 0) {
-      console.log("Page exists and will be deleted");
-      console.log("Page name: ", pageName);
+    const remainingPageLinks = page.locator(`//a[normalize-space()='${pageName}']`);
+    const pageCount = await remainingPageLinks.count();
+    console.log(`Remaining pages with name '${pageName}': ${pageCount}`);
+    
+    if (pageCount > 0) {
+      console.log("Page found and will be deleted");
       await page.waitForTimeout(1000);
-      await pageLink.hover();
-      await page.waitForTimeout(2000);
+      await remainingPageLinks.first().hover();
       await page.locator(`//a[contains(@aria-label, 'Move') and contains(@aria-label, '${pageName}') and contains(@aria-label, 'Trash')]`).first().click();
+      console.log("Page deleted successfully and moving to Trash now ...  ");
       await page.waitForTimeout(2000);
     } else {
       pageExists = false;
@@ -1913,6 +1925,10 @@ export async function deleteform(page, formName = null) {
   
   if (formName) {
     // Delete all forms with specific name
+    const allFormRows = page.locator(`//tr[.//a[normalize-space()='${formName}']]`);
+    const totalFormCount = await allFormRows.count();
+    console.log(`Total forms found with name '${formName}': ${totalFormCount}`);
+    
     let formExists = true;
     while (formExists) {
       const formRow = page.locator(`//tr[.//a[normalize-space()='${formName}']]`).first();
@@ -1941,7 +1957,7 @@ export async function deleteform(page, formName = null) {
         formExists = false;
       }
     }
-    console.log("All forms have been successfully deleted.");
+    console.log(`No forms found with name "${formName}".`);
   }
 }
 
@@ -2051,8 +2067,60 @@ export async function checkSquareTransaction(page, submittedAmount1) {
   }
   await page1.close();
   return { match: isEqual, submittedAmount: submittedClean, squareValue: squareClean };
-  
+}
 
+
+
+
+
+
+
+
+// Function to add multiple shortcode blocks to a page
+export async function addMultipleShortcodes(page, shortcodes, pageName) {
+  await page.goto('https://wppayautomation.instawp.xyz/wp-admin/post-new.php?post_type=page');
+  await page.waitForTimeout(5000);
+  await page.getByRole('button', { name: 'Close' }).click();
+  await page.getByRole('textbox', { name: 'Add title' }).fill(pageName);
+  
+  // Add multiple shortcode blocks using the correct Gutenberg approach
+  for (let i = 0; i < shortcodes.length; i++) {
+    await page.waitForTimeout(1000);
+    if (i !==0) {
+
+      await page.getByText('Multi Form Test PageShortcode').click();
+    }
+    else {
+  // Click on empty block
+  await page.getByRole('button', { name: 'Add default block' }).click();
+  // await page.getByRole('document', { name: 'Empty block; start writing or' }).click();
+    }
+  
+    
+    // Type /shortcode to open shortcode option
+    await page.getByRole('document', { name: 'Empty block; start writing or' }).fill('/shortcode');
+    
+    // Click on Shortcode option
+    await page.getByRole('option', { name: 'Shortcode' }).click();
+    
+    // Fill the shortcode text
+    await page.getByRole('textbox', { name: 'Shortcode text' }).fill(shortcodes[i]);
+    console.log(shortcodes[i]);
+    await page.waitForTimeout(1000);
+    
+  
+    
+    console.log(`Added shortcode block ${i + 1}: ${shortcodes[i].substring(0, 50)}...`);
+    
+    // Wait a bit before adding next shortcode
+    await page.waitForTimeout(3000);
+  }
+  
+  // Publish page
+  await page.getByRole('button', { name: 'Publish', exact: true }).click();
+  await page.getByRole('button', { name: 'Publish', exact: true }).click();
+  
+  console.log(`Page "${pageName}" created with ${shortcodes.length} shortcode blocks`);
 }
 
 

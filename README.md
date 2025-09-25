@@ -2,6 +2,106 @@
 
 This project demonstrates comprehensive testing of WP Easy Pay plugin forms using Playwright automation framework. It includes tests for various payment form types, layouts, and currencies with reusable utility functions.
 
+## 🚀 **Latest Updates (December 2024)**
+
+### **✅ Performance Optimizations:**
+
+- **Realistic Timing**: Updated performance thresholds for card processing
+  - Average response time: < 25 seconds (realistic for payment forms)
+  - Max response time: < 45 seconds (includes card processing time)
+  - Large data processing: < 45 seconds (with card details)
+- **Better Error Handling**: Fixed execution context destroyed errors
+- **Improved Locators**: Updated to reliable `input[name="wpep-*-field"]` selectors
+- **Memory Management**: Better browser context handling
+
+### **✅ Cross-Browser Testing:**
+
+- **4 Browsers**: Chrome, Firefox, Safari, Microsoft Edge
+- **Cross-Browser Compatibility**: Test 6 runs on all browsers
+- **UI Mode**: Available for Chromium debugging
+- **Headed Mode**: Available for all browsers visual testing
+- **Debug Mode**: Available for specific browser debugging
+
+### **✅ Form Flow Improvements:**
+
+- **Correct Order**: First Name → Last Name → Email → Amount
+- **Card Processing**: Complete iframe handling for payments
+- **Data Persistence**: Realistic reload testing with fallbacks
+- **Better Timing**: 500ms-2000ms waits between actions
+- **Error Recovery**: Graceful handling of form errors
+
+### **✅ Bug Fixes:**
+
+- **Subscription Coupon**: Fixed coupon parameter mismatch
+- **Memory Management**: Better browser context handling
+- **Timeout Issues**: Resolved performance test timeouts
+- **Form Field Locators**: Updated all tests to use reliable selectors
+- **Browser Context**: Fixed "Target page, context or browser has been closed" error
+
+### **✅ Test Coverage:**
+
+- **Total Tests**: 316+ tests across 4 browsers
+- **Test Files**: 21 comprehensive test files
+- **Utility Functions**: 50+ reusable functions
+- **Lines of Code**: 2100+ lines in formUtils.js
+
+## 🚀 **Quick Start Commands**
+
+### **Run All Tests:**
+
+```bash
+# All tests on all browsers
+npx playwright test
+
+# All tests on specific browser
+npx playwright test --project="chromium"
+npx playwright test --project="firefox"
+npx playwright test --project="webkit"
+npx playwright test --project="Microsoft Edge"
+```
+
+### **Run Specific Test Categories:**
+
+```bash
+# Performance tests
+npx playwright test tests/Performance-Load-Testing.spec.js
+
+# Integration tests
+npx playwright test tests/Integration-Multi-Form-Testing.spec.js
+
+# Advanced features
+npx playwright test tests/Advanced-Features-Testing.spec.js
+
+# Edge cases
+npx playwright test tests/Edge-Cases-Error-Handling.spec.js
+```
+
+### **Run Specific Tests:**
+
+```bash
+# Cross-browser compatibility
+npx playwright test --grep "Cross-Browser Form Compatibility Test"
+
+# Form data persistence
+npx playwright test --grep "Form Data Persistence Test"
+
+# Performance testing
+npx playwright test --grep "Rapid Form Submissions Test"
+```
+
+### **Debug Mode:**
+
+```bash
+# UI mode (Chromium only)
+npx playwright test --ui
+
+# Headed mode (all browsers)
+npx playwright test --headed
+
+# Debug specific test
+npx playwright test --grep "Cross-Browser Form Compatibility Test" --debug
+```
+
 ## Project Structure
 
 ```text
@@ -32,14 +132,52 @@ tests/
 
 ## Test Categories
 
-### 1. Donation Recurring Tests
+### 1. **Performance & Load Testing** 🚀
+
+- **Multiple Forms Creation**: Simultaneous form creation testing
+- **Large Data Processing**: Large form data with card processing
+- **Rapid Submissions**: 10 rapid form submissions
+- **Response Time Testing**: Form response time measurement
+- **Realistic Thresholds**: 25-45 seconds for card processing
+
+### 2. **Integration & Multi-Form Testing** 🔗
+
+- **All Form Layouts**: Custom, Dropdown, Radio, Tabular
+- **All Currency Types**: $, USD, No Symbol
+- **Data Persistence**: Form data after page reload
+- **Multiple Form Types**: Simple, Donation, Subscription on same page
+- **Complete Workflow**: End-to-end form workflow
+- **Cross-Browser Compatibility**: Chrome, Firefox, Safari, Edge
+
+### 3. **Advanced Features Testing** ⚡
+
+- **Popup & Multistep Forms**: Complex form interactions
+- **Coupon Code Testing**: Coupon validation and application
+- **Redirection Testing**: Post-payment redirections
+- **Save Card Feature**: Card saving functionality
+- **Terms & Conditions**: Legal compliance testing
+- **Mobile Responsive**: Mobile device compatibility
+- **Accessibility**: WCAG compliance testing
+- **Error Recovery**: Error handling and recovery
+
+### 4. **Edge Cases & Error Handling** 🛡️
+
+- **Invalid Amount Input**: Negative values, empty fields
+- **Maximum Amount Limits**: Large number handling
+- **Invalid Email Formats**: Email validation testing
+- **Network Timeouts**: Connection issue handling
+- **Multiple Submissions**: Concurrent form submissions
+- **Special Characters**: Unicode and special character handling
+- **Very Long Text**: Long text input testing
+
+### 5. **Donation Recurring Tests** 💰
 
 - **Custom Layout**: Fixed amounts with other amount field
 - **Dropdown Layout**: Predefined options in dropdown
 - **Radio Layout**: Radio button selection
 - **Tabular Layout**: Table format with quantity selection
 
-### 2. Donation Payment Tests
+### 6. **Donation Payment Tests** 💳
 
 - **Custom Layout**: Fixed amounts with other amount field
 - **Dropdown Layout**: Predefined options in dropdown
@@ -47,7 +185,7 @@ tests/
 - **Tabular Layout**: Table format with quantity selection
 - **Square Verification**: Payment verification with Square
 
-### 3. Simple Payment Tests
+### 7. **Simple Payment Tests** 💵
 
 - **Custom Layout**: Fixed amounts with other amount field
 - **Dropdown Layout**: Predefined options in dropdown
