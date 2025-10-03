@@ -1,0 +1,57 @@
+WP Easy Pay text content: WP EASY PAY
+	WP EASY PAYAll FormsCreate Payment FormSubscriptionsCouponsReportsSquare ConnectIntegrationsSubmit Feature IdeaAffiliationAccount
+ [wpep-form id="1105"] 
+Your form has been created successfully
+Your page has been added successfully
+This is the Total Amount : $10.00
+Your Payment is Successfully Sent.  
+Found 9 actual transaction rows
+Found amount element 1
+Found amount element 2
+Found amount element 3
+Found amount element 4
+Found amount element 5
+Found amount element 6
+Found amount element 7
+Found amount element 8
+Found amount element 9
+Found 9 transaction amounts
+Final: Found 9 transaction amounts
+Looking for amount: $10.00
+Transaction 9: $200.00
+Comparing: "10" vs "200"
+Transaction 8: $200.00
+Comparing: "10" vs "200"
+Transaction 7: $200.00
+Comparing: "10" vs "200"
+Transaction 6: $200.00
+Comparing: "10" vs "200"
+Transaction 5: $200.00
+Comparing: "10" vs "200"
+Transaction 4: $10.00
+Comparing: "10" vs "10"
+✅ Found matching transaction at index 4: $10.00 (Latest match)
+🎯 Clicking on matching transaction...
+✅ Successfully clicked on transaction
+Screenshot saved to C:\Users\Objects\Downloads\Screenshot\Square_Invoice_1759471988750__10_00.png
+Square Transaction Details: $10.00 Payment Oct 3, 2025 11:08 am Collected at: Default Test Account Order Source: Sandbox for sq0idp-k0r5c0MNIBIkTd5pXmV-tg Sale attributed to: Untracked team member Paid by: Muhammad Sufiyan Simple Payment $10.00 Total $10.00 Visa 1111 $10.00 Oct 3, 2025 11:08 am
+Transaction Amount: $10.00
+✅ Match: submittedAmount ($10.00) equals Squarevalue ($10.00)
+Total pages found with name '$ Symbol Currency with Popup Custom Page': 4
+Remaining pages with name '$ Symbol Currency with Popup Custom Page': 4
+Page found and will be deleted
+Page deleted successfully and moving to Trash now ...  
+Remaining pages with name '$ Symbol Currency with Popup Custom Page': 3
+Page found and will be deleted
+Page deleted successfully and moving to Trash now ...  
+Remaining pages with name '$ Symbol Currency with Popup Custom Page': 2
+Page found and will be deleted
+Page deleted successfully and moving to Trash now ...  
+Remaining pages with name '$ Symbol Currency with Popup Custom Page': 1
+Page found and will be deleted
+Page deleted successfully and moving to Trash now ...  
+Remaining pages with name '$ Symbol Currency with Popup Custom Page': 0
+Total forms found with name 'Simple Form': 2
+All forms with name "Simple Form" have been successfully deleted.
+Logs Count: Number of Logs (3)
+Screenshot saved to C:\Users\Objects\Downloads\Screenshot\debug_log_screenshot.png

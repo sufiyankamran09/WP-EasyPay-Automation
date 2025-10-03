@@ -1,0 +1,387 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation "Main menu":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#wpbody-content"
+      - link "Skip to toolbar" [ref=e4] [cursor=pointer]:
+        - /url: "#wp-toolbar"
+      - list [ref=e7]:
+        - listitem [ref=e8]:
+          - link "Dashboard" [ref=e9] [cursor=pointer]:
+            - /url: index.php
+            - generic [ref=e10] [cursor=pointer]: 
+            - generic [ref=e11] [cursor=pointer]: Dashboard
+          - list [ref=e12]:
+            - listitem [ref=e13]:
+              - link "Home" [ref=e14] [cursor=pointer]:
+                - /url: index.php
+            - listitem [ref=e15]:
+              - link "Updates 1" [ref=e16] [cursor=pointer]:
+                - /url: update-core.php
+                - text: Updates
+                - generic [ref=e18] [cursor=pointer]: "1"
+        - listitem [ref=e19]
+        - listitem [ref=e21]:
+          - link "Posts" [ref=e22] [cursor=pointer]:
+            - /url: edit.php
+            - generic [ref=e23] [cursor=pointer]: 
+            - generic [ref=e24] [cursor=pointer]: Posts
+          - list [ref=e25]:
+            - listitem [ref=e26]:
+              - link "All Posts" [ref=e27] [cursor=pointer]:
+                - /url: edit.php
+            - listitem [ref=e28]:
+              - link "Add Post" [ref=e29] [cursor=pointer]:
+                - /url: post-new.php
+            - listitem [ref=e30]:
+              - link "Categories" [ref=e31] [cursor=pointer]:
+                - /url: edit-tags.php?taxonomy=category
+            - listitem [ref=e32]:
+              - link "Tags" [ref=e33] [cursor=pointer]:
+                - /url: edit-tags.php?taxonomy=post_tag
+        - listitem [ref=e34]:
+          - link "WP EASY PAY" [ref=e35] [cursor=pointer]:
+            - /url: edit.php?post_type=wp_easy_pay
+            - generic [ref=e37] [cursor=pointer]: WP EASY PAY
+          - list [ref=e38]:
+            - listitem [ref=e39]:
+              - link "All Forms" [ref=e40] [cursor=pointer]:
+                - /url: edit.php?post_type=wp_easy_pay
+            - listitem [ref=e41]:
+              - link "Create Payment Form" [ref=e42] [cursor=pointer]:
+                - /url: post-new.php?post_type=wp_easy_pay
+            - listitem [ref=e43]:
+              - link "Subscriptions" [ref=e44] [cursor=pointer]:
+                - /url: edit.php?post_type=wpep_subscriptions
+            - listitem [ref=e45]:
+              - link "Coupons" [ref=e46] [cursor=pointer]:
+                - /url: edit.php?post_type=wpep_coupons
+            - listitem [ref=e47]:
+              - link "Reports" [ref=e48] [cursor=pointer]:
+                - /url: edit.php?post_type=wpep_reports
+            - listitem [ref=e49]:
+              - link "Square Connect" [ref=e50] [cursor=pointer]:
+                - /url: edit.php?post_type=wp_easy_pay&page=wpep-settings
+            - listitem [ref=e51]:
+              - link "Integrations" [ref=e52] [cursor=pointer]:
+                - /url: edit.php?post_type=wp_easy_pay&page=wpep-integrations
+            - listitem [ref=e53]:
+              - link "Submit Feature Idea" [ref=e54] [cursor=pointer]:
+                - /url: edit.php?post_type=wp_easy_pay&page=wpep-roadmap
+            - listitem [ref=e55]:
+              - link "Affiliation" [ref=e56] [cursor=pointer]:
+                - /url: edit.php?post_type=wp_easy_pay&page=wp-easy-pay-affiliation
+                - generic [ref=e57] [cursor=pointer]: Affiliation
+            - listitem [ref=e58]:
+              - link "Account" [ref=e59] [cursor=pointer]:
+                - /url: edit.php?post_type=wp_easy_pay&page=wp-easy-pay-account
+                - generic [ref=e60] [cursor=pointer]: Account
+        - listitem [ref=e61]:
+          - link "Media" [ref=e62] [cursor=pointer]:
+            - /url: upload.php
+            - generic [ref=e63] [cursor=pointer]: 
+            - generic [ref=e64] [cursor=pointer]: Media
+          - list [ref=e65]:
+            - listitem [ref=e66]:
+              - link "Library" [ref=e67] [cursor=pointer]:
+                - /url: upload.php
+            - listitem [ref=e68]:
+              - link "Add Media File" [ref=e69] [cursor=pointer]:
+                - /url: media-new.php
+        - listitem [ref=e70]:
+          - link "Pages" [ref=e71] [cursor=pointer]:
+            - /url: edit.php?post_type=page
+            - generic [ref=e72] [cursor=pointer]: 
+            - generic [ref=e73] [cursor=pointer]: Pages
+          - list [ref=e74]:
+            - listitem [ref=e75]:
+              - link "All Pages" [ref=e76] [cursor=pointer]:
+                - /url: edit.php?post_type=page
+            - listitem [ref=e77]:
+              - link "Add Page" [ref=e78] [cursor=pointer]:
+                - /url: post-new.php?post_type=page
+        - listitem [ref=e79]:
+          - link "Comments" [ref=e80] [cursor=pointer]:
+            - /url: edit-comments.php
+            - generic [ref=e81] [cursor=pointer]: 
+            - generic [ref=e82] [cursor=pointer]: Comments
+        - listitem [ref=e83]:
+          - link "Contact" [ref=e84] [cursor=pointer]:
+            - /url: admin.php?page=wpcf7
+            - generic [ref=e85] [cursor=pointer]: 
+            - generic [ref=e86] [cursor=pointer]: Contact
+          - list [ref=e87]:
+            - listitem [ref=e88]:
+              - link "Contact Forms" [ref=e89] [cursor=pointer]:
+                - /url: admin.php?page=wpcf7
+            - listitem [ref=e90]:
+              - link "Add Contact Form" [ref=e91] [cursor=pointer]:
+                - /url: admin.php?page=wpcf7-new
+            - listitem [ref=e92]:
+              - link "Integration" [ref=e93] [cursor=pointer]:
+                - /url: admin.php?page=wpcf7-integration
+            - listitem [ref=e94]:
+              - link "CF7 Apps" [ref=e95] [cursor=pointer]:
+                - /url: admin.php?page=cf7apps
+            - listitem [ref=e96]:
+              - link "Entries" [ref=e97] [cursor=pointer]:
+                - /url: admin.php?page=cf7apps&tab=entries9238#/settings/cf7-entries/2
+            - listitem [ref=e98]:
+              - link "Honeypot" [ref=e99] [cursor=pointer]:
+                - /url: admin.php?page=honeypot4cf7
+        - listitem [ref=e100]
+        - listitem [ref=e102]:
+          - link "Appearance" [ref=e103] [cursor=pointer]:
+            - /url: themes.php
+            - generic [ref=e104] [cursor=pointer]: 
+            - generic [ref=e105] [cursor=pointer]: Appearance
+          - list [ref=e106]:
+            - listitem [ref=e107]:
+              - link "Themes" [ref=e108] [cursor=pointer]:
+                - /url: themes.php
+            - listitem [ref=e109]:
+              - link "Editor" [ref=e110] [cursor=pointer]:
+                - /url: site-editor.php
+        - listitem [ref=e111]:
+          - link "Plugins" [ref=e112] [cursor=pointer]:
+            - /url: plugins.php
+            - generic [ref=e113] [cursor=pointer]: 
+            - generic [ref=e114] [cursor=pointer]: Plugins
+          - list [ref=e115]:
+            - listitem [ref=e116]:
+              - link "Installed Plugins" [ref=e117] [cursor=pointer]:
+                - /url: plugins.php
+            - listitem [ref=e118]:
+              - link "Add Plugin" [ref=e119] [cursor=pointer]:
+                - /url: plugin-install.php
+        - listitem [ref=e120]:
+          - link "Users" [ref=e121] [cursor=pointer]:
+            - /url: users.php
+            - generic [ref=e122] [cursor=pointer]: 
+            - generic [ref=e123] [cursor=pointer]: Users
+          - list [ref=e124]:
+            - listitem [ref=e125]:
+              - link "All Users" [ref=e126] [cursor=pointer]:
+                - /url: users.php
+            - listitem [ref=e127]:
+              - link "Add User" [ref=e128] [cursor=pointer]:
+                - /url: user-new.php
+            - listitem [ref=e129]:
+              - link "Profile" [ref=e130] [cursor=pointer]:
+                - /url: profile.php
+        - listitem [ref=e131]:
+          - link "Tools" [ref=e132] [cursor=pointer]:
+            - /url: tools.php
+            - generic [ref=e133] [cursor=pointer]: 
+            - generic [ref=e134] [cursor=pointer]: Tools
+          - list [ref=e135]:
+            - listitem [ref=e136]:
+              - link "Available Tools" [ref=e137] [cursor=pointer]:
+                - /url: tools.php
+            - listitem [ref=e138]:
+              - link "Import" [ref=e139] [cursor=pointer]:
+                - /url: import.php
+            - listitem [ref=e140]:
+              - link "Export" [ref=e141] [cursor=pointer]:
+                - /url: export.php
+            - listitem [ref=e142]:
+              - link "Site Health 3" [ref=e143] [cursor=pointer]:
+                - /url: site-health.php
+                - text: Site Health
+                - generic [ref=e145] [cursor=pointer]: "3"
+            - listitem [ref=e146]:
+              - link "Export Personal Data" [ref=e147] [cursor=pointer]:
+                - /url: export-personal-data.php
+            - listitem [ref=e148]:
+              - link "Erase Personal Data" [ref=e149] [cursor=pointer]:
+                - /url: erase-personal-data.php
+            - listitem [ref=e150]:
+              - link "Debug Log Manager" [ref=e151] [cursor=pointer]:
+                - /url: tools.php?page=debug-log-manager
+            - listitem [ref=e152]:
+              - link "WP Reset" [ref=e153] [cursor=pointer]:
+                - /url: tools.php?page=wp-reset
+            - listitem [ref=e154]:
+              - link "Theme File Editor" [ref=e155] [cursor=pointer]:
+                - /url: theme-editor.php
+            - listitem [ref=e156]:
+              - link "Plugin File Editor" [ref=e157] [cursor=pointer]:
+                - /url: plugin-editor.php
+        - listitem [ref=e158]:
+          - link "Settings" [ref=e159] [cursor=pointer]:
+            - /url: options-general.php
+            - generic [ref=e160] [cursor=pointer]: 
+            - generic [ref=e161] [cursor=pointer]: Settings
+          - list [ref=e162]:
+            - listitem [ref=e163]:
+              - link "General" [ref=e164] [cursor=pointer]:
+                - /url: options-general.php
+            - listitem [ref=e165]:
+              - link "Writing" [ref=e166] [cursor=pointer]:
+                - /url: options-writing.php
+            - listitem [ref=e167]:
+              - link "Reading" [ref=e168] [cursor=pointer]:
+                - /url: options-reading.php
+            - listitem [ref=e169]:
+              - link "Discussion" [ref=e170] [cursor=pointer]:
+                - /url: options-discussion.php
+            - listitem [ref=e171]:
+              - link "Media" [ref=e172] [cursor=pointer]:
+                - /url: options-media.php
+            - listitem [ref=e173]:
+              - link "Permalinks" [ref=e174] [cursor=pointer]:
+                - /url: options-permalink.php
+            - listitem [ref=e175]:
+              - link "Privacy" [ref=e176] [cursor=pointer]:
+                - /url: options-privacy.php
+            - listitem [ref=e177]:
+              - link "Password Protected" [ref=e178] [cursor=pointer]:
+                - /url: options-general.php?page=password-protected
+        - listitem [ref=e179]
+        - listitem [ref=e181]:
+          - link "Password Protected" [ref=e182] [cursor=pointer]:
+            - /url: admin.php?page=password-protected
+            - generic [ref=e183] [cursor=pointer]: 
+            - generic [ref=e184] [cursor=pointer]: Password Protected
+          - list [ref=e185]:
+            - listitem [ref=e186]:
+              - link "Password Protected" [ref=e187] [cursor=pointer]:
+                - /url: admin.php?page=password-protected
+            - listitem [ref=e188]:
+              - link "Contact Us" [ref=e189] [cursor=pointer]:
+                - /url: admin.php?page=password-protected-contact
+                - generic [ref=e190] [cursor=pointer]: Contact Us
+        - listitem [ref=e191]:
+          - button "Collapse Main menu" [expanded] [ref=e192] [cursor=pointer]:
+            - generic [ref=e193] [cursor=pointer]: 
+            - generic [ref=e194] [cursor=pointer]: Collapse Menu
+    - generic [ref=e195]:
+      - generic [ref=e196]:
+        - navigation "Toolbar":
+          - menu:
+            - group [ref=e197]:
+              - menuitem "About WordPress" [ref=e198] [cursor=pointer]:
+                - generic [ref=e199] [cursor=pointer]: 
+                - generic [ref=e200] [cursor=pointer]: About WordPress
+            - group [ref=e201]:
+              - menuitem " wppayautomation.instawp.xyz" [ref=e202] [cursor=pointer]
+            - group [ref=e203]:
+              - menuitem "1 update available" [ref=e204] [cursor=pointer]:
+                - generic [ref=e205] [cursor=pointer]: 
+                - generic [ref=e206] [cursor=pointer]: "1"
+                - generic [ref=e207] [cursor=pointer]: 1 update available
+            - group [ref=e208]:
+              - menuitem "0 Comments in moderation" [ref=e209] [cursor=pointer]:
+                - generic [ref=e210] [cursor=pointer]: 
+                - generic [ref=e211] [cursor=pointer]: "0"
+                - generic [ref=e212] [cursor=pointer]: 0 Comments in moderation
+            - group [ref=e213]:
+              - menuitem "New" [ref=e214] [cursor=pointer]:
+                - generic [ref=e215] [cursor=pointer]: 
+                - generic [ref=e216] [cursor=pointer]: New
+            - group [ref=e217]:
+              - menuitem "Number of Logs (0)" [ref=e218] [cursor=pointer]
+            - group [ref=e219]:
+              - menuitem "" [ref=e220] [cursor=pointer]
+          - menu [ref=e221]:
+            - group [ref=e222]:
+              - menuitem "Howdy, Automation" [ref=e223] [cursor=pointer]:
+                - text: Howdy,
+                - generic [ref=e224] [cursor=pointer]: Automation
+      - main [ref=e225]:
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - heading "Debug Log Manager by Bowo" [level=1] [ref=e230]:
+              - text: Debug Log Manager
+              - generic [ref=e231]:
+                - text: by
+                - link "Bowo" [ref=e232] [cursor=pointer]:
+                  - /url: https://bowo.io/bowoio-dlm
+            - generic [ref=e233]:
+              - link "★ Review" [ref=e234] [cursor=pointer]:
+                - /url: https://bowo.io/review-dlm
+                - generic [ref=e235] [cursor=pointer]: ★
+                - text: Review
+              - link "✚ Feedback" [ref=e236] [cursor=pointer]:
+                - /url: https://bowo.io/feedback-dlm
+              - link "❤ Sponsor" [ref=e237] [cursor=pointer]:
+                - /url: https://bowo.io/sponsor-dlm
+                - img "❤" [ref=e238] [cursor=pointer]
+                - text: Sponsor
+          - generic [ref=e239]:
+            - generic [ref=e240]:
+              - generic [ref=e244]:
+                - strong [ref=e245]: Error Logging
+                - text: ": Enabled on Sep 19, 2025 - 12:07:57"
+              - generic [ref=e249]:
+                - strong [ref=e250]: Auto-Refresh
+                - text: ": Disabled"
+            - generic [ref=e251]:
+              - generic [ref=e253]:
+                - text: Show
+                - combobox "Show entries" [ref=e254] [cursor=pointer]:
+                  - option "10" [selected]
+                  - option "25"
+                  - option "50"
+                  - option "100"
+                - text: entries
+              - generic [ref=e255]:
+                - generic [ref=e256]:
+                  - text: "Search:"
+                  - searchbox "Search:" [ref=e257]
+                - combobox [ref=e258] [cursor=pointer]:
+                  - option "All Types" [selected]
+                  - option "PHP Fatal"
+                  - option "PHP Warning"
+                  - option "PHP Notice"
+                  - option "PHP Deprecated"
+                  - option "PHP Parse"
+                  - option "PHP Exception"
+                  - option "Database"
+                  - option "JavaScript"
+                  - option "Other"
+              - table [ref=e259]:
+                - rowgroup [ref=e260]:
+                  - 'row "#: activate to sort column descending Type: activate to sort column ascending Details: activate to sort column ascending Last Occurrence: activate to sort column ascending" [ref=e261]':
+                    - 'cell "#: activate to sort column descending" [ref=e262] [cursor=pointer]': "#"
+                    - 'cell "Type: activate to sort column ascending" [ref=e263] [cursor=pointer]': Type
+                    - 'cell "Details: activate to sort column ascending" [ref=e264] [cursor=pointer]': Details
+                    - 'cell "Last Occurrence: activate to sort column ascending" [ref=e265] [cursor=pointer]': Last Occurrence
+                - rowgroup [ref=e266]:
+                  - row "No data available in table" [ref=e267]:
+                    - cell "No data available in table" [ref=e268]
+              - status [ref=e269]: Showing 0 to 0 of 0 entries
+              - generic [ref=e270]:
+                - link "Previous" [disabled] [ref=e271]
+                - link "Next" [disabled] [ref=e272]
+          - generic [ref=e273]:
+            - generic [ref=e274]:
+              - generic [ref=e275]:
+                - strong [ref=e276]: Log file
+                - text: ": /wp-content/uploads/debug-log-manager/wppayautomationinstawpxyz_20250911055326306124_debug.log ("
+                - generic [ref=e277]: 0 B
+                - text: )
+              - button "Clear Log" [ref=e278] [cursor=pointer]
+            - generic [ref=e279]:
+              - generic [ref=e283]: Do not log javascript errors
+              - generic [ref=e287]: Do not modify SCRIPT_DEBUG value in wp-config.php
+              - generic [ref=e291]: Do not process entries with non-UTC timezones, which can be resource-intensive when log file size is significantly large.
+            - generic [ref=e292]: The wp-config.php file is located in WordPress root directory (/home/conuzanetu6368/web/wppayautomation.instawp.xyz/public_html/wp-config.php) and is writeable.
+    - contentinfo [ref=e293]:
+      - paragraph [ref=e294]:
+        - link "Debug Log Manager" [ref=e295] [cursor=pointer]:
+          - /url: https://bowo.io/dotorg-dlm
+        - text: is on
+        - link "github" [ref=e296] [cursor=pointer]:
+          - /url: https://bowo.io/github-dlm
+      - paragraph [ref=e297]:
+        - text: Also by Bowo →
+        - link "WordPress Newsboard" [ref=e298] [cursor=pointer]:
+          - /url: https://bowo.io/wpn-dlm
+        - text: ": The latest from 100+ sources"
+    - text: 
+  - generic [ref=e299]: Copied to clipboard
+```

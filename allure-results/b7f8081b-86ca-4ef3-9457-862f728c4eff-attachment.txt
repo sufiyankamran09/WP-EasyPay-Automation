@@ -1,0 +1,7 @@
+WP Easy Pay text content: WP EASY PAY
+	WP EASY PAYAll FormsCreate Payment FormSubscriptionsCouponsReportsSquare ConnectIntegrationsSubmit Feature IdeaAffiliationAccount
+ [wpep-form id="1086"] 
+Your form has been created successfully
+Your page has been added successfully
+This is the Total Amount : $10.00
+Your Payment is Successfully Sent.  

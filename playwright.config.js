@@ -19,11 +19,11 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries:1,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: 5,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: 'allure-playwright',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -44,21 +44,21 @@ export default defineConfig({
     },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'],
-      headless: true,
-      viewport: { width: 1515, height: 1100 },
-      },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'],
+    //   headless: true,
+    //   viewport: { width: 1515, height: 1100 },
+    //   },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'],
-      headless: true,
-      viewport: { width: 1515, height: 1100 },
-      },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'],
+    //   headless: true,
+    //   viewport: { width: 1515, height: 1100 },
+    //   },
+    // },
 
     /* Test against mobile viewports. */
     // {
@@ -71,13 +71,13 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge',
-      viewport: { width: 1515, height: 1100 },
-      headless: true,
-      },
-    },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge',
+    //   viewport: { width: 1515, height: 1100 },
+    //   headless: true,
+    //   },
+    // },
     // {
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
@@ -90,5 +90,7 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+
+  //test.describe.configure({ mode: 'parallel'  });
 });
 

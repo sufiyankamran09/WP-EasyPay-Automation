@@ -34,7 +34,7 @@ export async function loginToWordPress(page, username = null, password = null) {
 
 // Function to create a payment form
 export async function createformCustom(page, options = {}) {
-  const { currency, title = 'Simple Form', description = 'This is a simple form', openInPopup, showMultistep, termsUrl = 'www.google.com',  popupButtonTitle } = options; // currency required; others optional
+  const { currency, title = 'Simple Form', description = `This is a simple form ${Math.random().toString(36).substr(2, 8)}`, openInPopup, showMultistep, termsUrl = 'www.google.com',  popupButtonTitle } = options; // currency required; others optional
 
   await page.getByRole('link', { name: 'WP EASY PAY', exact: true }).click();
   await page.getByLabel('Main menu', { exact: true }).getByRole('link', { name: 'Create Payment Form' }).click();
@@ -407,7 +407,7 @@ export async function DonationcreateformCustom(page, options = {}) {
 
 // Create donation form with Dropdown payment type
 export async function DonationcreateformDropdown(page, options = {}) {
-  const { currency, title = 'Donation Form', description = 'This is a donation form' } = options;
+  const { currency, title = 'Donation Form', description = `This is a donation form ${Math.random().toString(36).substr(2, 8)}` } = options;
 
   await page.getByRole('link', { name: 'WP EASY PAY', exact: true }).click();
   await page.getByLabel('Main menu', { exact: true }).getByRole('link', { name: 'Create Payment Form' }).click();
@@ -476,7 +476,7 @@ export async function DonationcreateformDropdown(page, options = {}) {
 
 // Create donation form with Radio payment type
 export async function DonationcreateformRadio(page, options = {}) {
-  const { currency, title = 'Donation Form', description = 'This is a donation form' } = options;
+  const { currency, title = 'Donation Form', description = `This is a donation form ${Math.random().toString(36).substr(2, 8)}` } = options;
 
   await page.getByRole('link', { name: 'WP EASY PAY', exact: true }).click();
   await page.getByLabel('Main menu', { exact: true }).getByRole('link', { name: 'Create Payment Form' }).click();
@@ -543,7 +543,7 @@ export async function DonationcreateformRadio(page, options = {}) {
 
 // Create donation form with Tabular payment type
 export async function DonationcreateformTabular(page, options = {}) {
-  const { currency, title = 'Donation Form', description = 'This is a donation form' } = options;
+  const { currency, title = 'Donation Form', description = `This is a donation form ${Math.random().toString(36).substr(2, 8)}` } = options;
 
   await page.getByRole('link', { name: 'WP EASY PAY', exact: true }).click();
   await page.getByLabel('Main menu', { exact: true }).getByRole('link', { name: 'Create Payment Form' }).click();
@@ -618,7 +618,7 @@ export async function DonationcreateformRecurring(page, options = {}) {
     currency, 
     layout = 'custom', // 'custom', 'dropdown', 'radio', 'tabular'
     title = 'Donation Recurring',
-    description = 'This is the Donation Recurring Form',
+    description = `This is the Donation Recurring Form ${Math.random().toString(36).substr(2, 8)}`,
     subscriptionCycle = 'WEEKLY',
     subscriptionLength = '2',
     // For custom layout
@@ -787,7 +787,7 @@ export async function Subscriptioncreateform(page, options = {}) {
     currency, 
     layout = 'custom', // 'custom', 'dropdown', 'radio', 'tabular'
     title = 'Subscription Payment',
-    description = 'This is the subscription Payment Form',
+    description = `This is the subscription Payment Form ${Math.random().toString(36).substr(2, 8)}`,
     enableCoupon = false,
     // For custom layout
     amount1 = '1000',
@@ -2010,8 +2010,7 @@ console.log('Logs Count:', logsCount); // Log the logs count
 
 
 
-
-// Function to check Square transactions (simple, same page, no new tab)
+//Function to check Square transactions (parallel-safe, same page, no new tab)
 export async function checkSquareTransaction(page, submittedAmount1) {
   // Go to Square login
   await page.goto('https://app.squareup.com/login?app=developer&lang_code=en&return_to=https://developer.squareup.com/console/en/sandbox-test-accounts');
@@ -2036,38 +2035,124 @@ export async function checkSquareTransaction(page, submittedAmount1) {
   await page1.getByRole('paragraph').filter({ hasText: 'Payments & invoices' }).click();
   await page1.getByTestId('sub-level-nav-section-child-transactions').getByText('Transactions').click();
 
-  // Read latest transaction amount and compare
-  await page1.locator("(//div[@class='l-transactions__desc-col type-ellipsis'])[1]").click();
-  await page1.waitForTimeout(2000);
-        // Define the folder path for saving the screenshot (Screenshot folder in Downloads)
-        const folderPath = path.join(os.homedir(), 'Downloads', 'Screenshot');
-        fs.mkdirSync(folderPath, { recursive: true });
+  // Wait for transactions to load
+  await page1.waitForTimeout(3000);
+  
+  // Get the PARENT transaction rows (not just description div)
+  const allTransactionRows = await page1.locator("//div[@class='l-transactions__desc-col type-ellipsis']/parent::div").all();
+  console.log(`Found ${allTransactionRows.length} actual transaction rows`);
+  
+  // Get amounts from the full transaction rows
+  const allAmountElements = [];
+  for (let i = 0; i < allTransactionRows.length; i++) {
+    // Now search within the FULL transaction row (parent div)
+    let amountElement = await allTransactionRows[i].locator("//div[@class='l-pull-right type-tnum type-strong']").first();
+    if (await amountElement.count() === 0) {
+      amountElement = await allTransactionRows[i].locator("text=/\\$[0-9]/").first();
+    }
+    if (await amountElement.count() === 0) {
+      amountElement = await allTransactionRows[i].locator("//div[contains(@class, 'type-tnum')]").first();
+    }
+    if (await amountElement.count() === 0) {
+      amountElement = await allTransactionRows[i].locator("//span[contains(text(), '$')]").first();
+    }
     
-        // Take the screenshot and save it
-        await page1.screenshot({
-          path: path.join(folderPath, 'Square_Invoice_screenshot.png'),
-        });
-        console.log('Screenshot saved to', path.join(folderPath, 'Square_Invoice_screenshot.png'));
-        const latestText = await page1.locator("//div[@class='detail-blade__body']").textContent();
-        const locator = await page1.locator("//div[@class='l-pull-right type-tnum type-strong']").textContent();
-        const cleanedText = latestText.replace(/\s+/g, ' ') // Replace multiple spaces or line breaks with a single space.trim(); // Remove leading and trailing whitespace
-  console.log(`Latest Square Transaction Amount: ${cleanedText}`);
-  const Squarevalue = locator.trim(); 
-    // Print the text content
-  console.log('Text Content:', Squarevalue);
-
-  // Equality check between submitted amount and Square displayed value
-  const submittedClean = (submittedAmount1 || '').trim();
-  const squareClean = (Squarevalue || '').trim();
-  const isEqual = submittedClean === squareClean;
-  if (isEqual) {
-    console.log(`Match: submittedAmount (${submittedClean}) equals Squarevalue (${squareClean})`);
-  } else {
-    console.log(`Mismatch: submittedAmount (${submittedClean}) vs Squarevalue (${squareClean})`);
+    if (await amountElement.count() > 0) {
+      allAmountElements.push(amountElement);
+      console.log(`Found amount element ${i + 1}`);
+    } else {
+      console.log(`No amount found in transaction row ${i + 1}`);
+    }
   }
-  await page1.close();
-  return { match: isEqual, submittedAmount: submittedClean, squareValue: squareClean };
+  
+  console.log(`Found ${allAmountElements.length} transaction amounts`);
+  console.log(`Looking for amount: ${submittedAmount1}`);
+  
+  let matchingTransaction = null;
+  
+  // Search through all transactions to find the matching amount (latest first)
+  for (let i = allAmountElements.length - 1; i >= 0; i--) {
+    const amountText = await allAmountElements[i].textContent();
+    const cleanAmount = (amountText || '').trim();
+    console.log(`Transaction ${i + 1}: ${cleanAmount}`);
+    
+    // Skip summary amounts (generic - any amount that appears multiple times or contains summary keywords)
+    const isSummaryAmount = cleanAmount.includes('TOTAL') || cleanAmount.includes('COLLECTED') || cleanAmount.includes('NET SALES') ||cleanAmount.includes('COMPLETE TRANSACTIONS') ||
+    cleanAmount.includes('SUMMARY') || cleanAmount.includes('OVERVIEW');
+    
+    if (isSummaryAmount) {
+      console.log(`  ⚠️  Skipping summary amount: ${cleanAmount}`);
+      continue;
+    }
+    
+    // Normalize amounts for comparison (remove $ and .00)
+    const normalizeAmount = (amount) => {
+      return amount.replace(/^\$/, '').replace(/\.00$/, '');
+    };
+    
+    const normalizedSubmitted = normalizeAmount(submittedAmount1);
+    const normalizedSquare = normalizeAmount(cleanAmount);
+    
+    console.log(`Comparing: "${normalizedSubmitted}" vs "${normalizedSquare}"`);
+    
+    if (normalizedSubmitted === normalizedSquare || cleanAmount === submittedAmount1) {
+      // Check if we have transaction rows (preferred) or use amount element
+      if (allTransactionRows.length > 0 && i < allTransactionRows.length) {
+        matchingTransaction = allTransactionRows[i];
+        console.log(`✅ Found matching transaction at index ${i + 1}: ${cleanAmount} (Latest match)`);
+      } else {
+        matchingTransaction = allAmountElements[i];
+        console.log(`✅ Found matching amount at index ${i + 1}: ${cleanAmount} (Latest match)`);
+      }
+      break;
+    }
+  }
+  
+  if (matchingTransaction) {
+    console.log(`🎯 Clicking on matching transaction...`);
+    // Click on the matching transaction
+    await matchingTransaction.click();
+    await page1.waitForTimeout(2000);
+    console.log(`✅ Successfully clicked on transaction`);
+    
+    // Define the folder path for saving the screenshot (Screenshot folder in Downloads)
+    const folderPath = path.join(os.homedir(), 'Downloads', 'Screenshot');
+    fs.mkdirSync(folderPath, { recursive: true });
+
+    // Take the screenshot and save it with unique name
+    const screenshotName = `Square_Invoice_${Date.now()}_${submittedAmount1.replace(/[^a-zA-Z0-9]/g, '_')}.png`;
+    await page1.screenshot({
+      path: path.join(folderPath, screenshotName),
+    });
+    console.log('Screenshot saved to', path.join(folderPath, screenshotName));
+    
+    const latestText = await page1.locator("//div[@class='detail-blade__body']").textContent();
+    const locator = await page1.locator("//div[@class='l-pull-right type-tnum type-strong']").textContent();
+    const cleanedText = latestText.replace(/\s+/g, ' ').trim();
+    console.log(`Square Transaction Details: ${cleanedText}`);
+    const Squarevalue = locator.trim(); 
+    console.log('Transaction Amount:', Squarevalue);
+
+    // Equality check between submitted amount and Square displayed value
+    const submittedClean = (submittedAmount1 || '').trim();
+    const squareClean = (Squarevalue || '').trim();
+    const isEqual = submittedClean === squareClean;
+    if (isEqual) {
+      console.log(`✅ Match: submittedAmount (${submittedClean}) equals Squarevalue (${squareClean})`);
+    } else {
+      console.log(`❌ Mismatch: submittedAmount (${submittedClean}) vs Squarevalue (${squareClean})`);
+    }
+    await page1.close();
+    return { match: isEqual, submittedAmount: submittedClean, squareValue: squareClean };
+  } else {
+    console.log(`❌ No matching transaction found for amount: ${submittedAmount1}`);
+    await page1.close();
+    return { match: false, submittedAmount: submittedAmount1, squareValue: 'Not Found' };
+  }
 }
+
+
+
 
 
 
@@ -2122,5 +2207,279 @@ export async function addMultipleShortcodes(page, shortcodes, pageName) {
   
   console.log(`Page "${pageName}" created with ${shortcodes.length} shortcode blocks`);
 }
+
+
+
+
+
+
+
+
+// Function to create form with synchronization and Square products
+export async function createformCustomWithSync(page, options = {}) {
+  const { 
+    currency = 'dollar', 
+    title = 'Synchronization Form', 
+    description = 'This form has synchronization with Square products',
+    enableCoupon = true,
+    searchTerm = 'b',
+    productName = 'Downloaded Image Bike'
+  } = options;
+
+  await page.getByRole('link', { name: 'WP EASY PAY', exact: true }).click();
+  await page.getByLabel('Main menu', { exact: true }).getByRole('link', { name: 'Create Payment Form' }).click();
+  await page.waitForTimeout(2000);
+  // await page.getByText('Square account settings').click();
+  await page.getByRole('checkbox', { name: 'Use Global Settings' }).check();
+  await page.waitForTimeout(2000);
+  await page.getByText('Form settings').click();
+
+  await page.getByRole('textbox', { name: 'please enter title' }).click();
+  await page.getByRole('textbox', { name: 'please enter title' }).fill(title);
+  await page.getByRole('textbox', { name: 'Please Enter description' }).click();
+  await page.getByRole('textbox', { name: 'Please Enter description' }).fill(description);
+
+  // Select Simple Payment Type
+  await page.locator('#paymentTypeSimple').check();
+
+  // Enable Coupon
+  if (enableCoupon) {
+    await page.getByRole('checkbox', { name: 'Enable Coupon on my form' }).check();
+  }
+  // Enable Synchronization
+  await page.getByRole('checkbox', { name: 'Enable Synchronization for' }).check();
+
+
+
+  // Add Square Products
+  await page.getByRole('button', { name: '+ Add Square Products' }).click();
+  await page.locator('.square-product-search-box').click();
+  await page.getByRole('textbox', { name: 'Search Product' }).fill(searchTerm);
+  await page.waitForTimeout(2000);
+  await page.getByRole('checkbox', { name: productName }).check();
+  await page.getByRole('button', { name: 'Add Selected Products' }).click();
+
+  // Success message
+  await page.getByRole('textbox', { name: 'Please Enter success message' }).click();
+  await page.getByRole('textbox', { name: 'Please Enter success message' }).fill('Your Payment Successfully sent.');
+  
+  // Terms and conditions
+  await page.getByRole('checkbox', { name: 'Enable terms and conditions' }).check();
+  await page.getByRole('textbox', { name: 'Please Enter Label' }).click();
+  await page.getByRole('textbox', { name: 'Please Enter Label' }).fill('Terms & Condition');
+  await page.getByRole('textbox', { name: 'Please Enter url for user' }).click();
+  await page.getByRole('textbox', { name: 'Please Enter url for user' }).fill('https://wpeasypay.com/documentation/');
+
+  // Currency selection based on option
+  if (currency === 'dollar') {
+    await page.getByRole('radio', { name: 'Currency Symbol (e.x: $)' }).check();
+  } else if (currency === 'none') {
+    await page.getByRole('radio', { name: 'No code/Symbol' }).check();
+  }
+
+  // Get shortcode
+  const shortcode = await page.locator("h4").textContent();
+  console.log('Generated synchronization form shortcode:', shortcode);
+
+  // Publish form
+  await page.getByRole('button', { name: 'Publish', exact: true }).click();
+  await page.waitForTimeout(3000);
+  console.log(`Form created successfully with synchronization and Square products '${currency}' currency`);
+  return shortcode;
+}
+
+
+
+
+
+
+
+
+
+// Function to submit form with product selection and coupon
+export async function submitFormCustomWithSync(page, options = {}) {
+  const {
+    currency = 'dollar',
+    firstName = 'Muhammad',
+    lastName = 'Sufiyan',
+    email = 'Sufiyan@gmail.com',
+    couponCode = 'Suf123',
+    productClicks = 3,
+    cardNumber = '4111 1111 1111 1111',
+    expiryDate = '11/29',
+    cvv = '321',
+    zipCode = '43523'
+  } = options;
+
+  // Fill form fields
+  await page.waitForTimeout(2000);
+  await page.locator('input[name="wpep-first-name-field"]').click();
+  await page.locator('input[name="wpep-first-name-field"]').fill(firstName);
+  await page.waitForTimeout(1000);
+  await page.locator('input[name="wpep-last-name-field"]').click();
+  await page.locator('input[name="wpep-last-name-field"]').fill(lastName);
+  await page.waitForTimeout(1000);
+  await page.locator('input[name="wpep-email-field"]').click();
+  await page.locator('input[name="wpep-email-field"]').fill(email);
+  await page.waitForTimeout(1000);
+  // Select product (click multiple times to select)
+  for (let i = 0; i < productClicks; i++) {
+    await page.locator('i').first().click();
+    await page.waitForTimeout(500);
+  }
+
+  // Verify product is visible and selected
+  await expect(page.locator("(//img[@alt='Avatar'])[1]")).toBeVisible();
+  await expect(page.locator("(//span[@class='product_label'])[1]")).toBeVisible();
+  await expect(page.locator("(//span[@class='product_label'])[1]")).toHaveText('Bike');
+  const Bike = await page.locator("(//span[@class='product_label'])[1]").textContent();
+  console.log(`Product is visible and the product name is ${Bike.trim()}`);
+  // // Apply coupon
+  // await page.locator('input[name="wpep-coupon"]').click();
+  // await page.locator('input[name="wpep-coupon"]').fill(couponCode);
+  // await page.getByRole('button', { name: 'Apply' }).click();
+  // await page.waitForTimeout(2000);
+
+  // // Verify coupon success message
+  // await expect(page.getByText('×Congratulation! Coupon')).toBeVisible();
+  // await expect(page.locator("(//div[@class='wpep-alert-coupon wpep-alert wpep-alert-success wpep-alert-dismissable'])[1]")).toBeVisible();
+  // const Coupon = await page.locator("(//div[@class='wpep-alert-coupon wpep-alert wpep-alert-success wpep-alert-dismissable'])[1]").textContent();
+  // console.log(`Coupon applied successfully: ${Coupon.trim()}`);
+
+  // Fill card details
+  await page.waitForTimeout(2000);
+  await page
+    .locator('//iframe[@title="Secure Credit Card Form"]')
+    .contentFrame()
+    .getByRole("textbox", { name: "Card number" })
+    .fill(cardNumber);
+  await page.waitForTimeout(1000);
+  await page
+    .locator('//iframe[@title="Secure Credit Card Form"]')
+    .contentFrame()
+    .getByRole("textbox", { name: "MM/YY" })
+    .fill(expiryDate);
+  await page
+    .locator('//iframe[@title="Secure Credit Card Form"]')
+    .contentFrame()
+    .getByRole("textbox", { name: "CVV" })
+    .fill(cvv);
+  await page
+    .locator('//iframe[@title="Secure Credit Card Form"]')
+    .contentFrame()
+    .getByRole("textbox", { name: "ZIP" })
+    .fill(zipCode);
+  await page.getByRole("checkbox", { name: "I accept the" }).check();
+
+  let submittedAmount = '';
+
+  // Submit form based on currency
+  if (currency === 'dollar') {
+    await expect(page.getByRole('button', { name: 'Pay $' })).toBeVisible();
+    await page.waitForTimeout(2000);
+    const amount = page.locator('small.display[id^="amount_display_"]');
+    const amountSymbol = await amount.textContent();
+    submittedAmount = amountSymbol;
+    console.log(`This is the Total Amount : ${amountSymbol}`);
+    await expect(amount).not.toContainText('USD');
+    await expect(amount).toContainText('$');
+    await page.getByRole('button', { name: 'Pay $' }).click();
+    await page.waitForTimeout(3000);
+  } else if (currency === 'usd') {
+    await expect(page.getByRole('button', { name: 'USD' })).toBeVisible();
+    await page.waitForTimeout(2000);
+    const amount = page.locator('small.display[id^="amount_display_"]');
+    const amountSymbol = await amount.textContent();
+    submittedAmount = amountSymbol;
+    console.log(`This is the Total Amount : ${amountSymbol}`);
+    await expect(amount).not.toContainText('$');
+    await expect(amount).toContainText('USD');
+    await page.getByRole('button', { name: 'USD' }).click();
+    await page.waitForTimeout(3000);
+  } else {
+    await expect(page.getByRole('button', { name: 'Pay' })).toBeVisible();
+    const amount = page.locator('small.display[id^="amount_display_"]');
+    const amountSymbol = await amount.textContent();
+    submittedAmount = amountSymbol;
+    console.log(`This is the Total Amount : ${amountSymbol}`);
+    await expect(amount).not.toContainText('$');
+    await expect(amount).not.toContainText('USD');
+    await page.getByRole('button', { name: 'Pay' }).click();
+    await page.waitForTimeout(3000);
+  }
+
+  console.log(`Form submitted successfully with product selection and coupon ${currency} currency`);
+  return submittedAmount; // Return amount for transaction verification
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//Function to check Square transactions1 (simple, same page, no new tab)
+// export async function checkSquareTransaction1(page, submittedAmount1) {
+//   // Go to Square login
+//   await page.goto('https://app.squareup.com/login?app=developer&lang_code=en&return_to=https://developer.squareup.com/console/en/sandbox-test-accounts');
+//   await page.getByText('Email or phone number').click();
+//   await page.getByTestId('username-input').fill('sufiyankamran29@gmail.com');
+//   await page.getByTestId('login-email-next-button').getByRole('button', { name: 'Continue' }).click();
+//   await page.getByTestId('login-password-input').click();
+//   await page.getByTestId('login-password-input').fill('Suf@79791');
+//   await page.getByTestId('login-password-submit-button').getByRole('button', { name: 'Sign in' }).click();
+  
+//   // Click "Remind me next time" button
+//   await page.locator('[id="2fa-post-login-promo-sms-remind-me-btn"]').getByRole('button', { name: 'Remind me next time' }).click();
+//   await page.locator('[id="2fa-post-login-promo-opt-out-modal-continue"]').getByRole('button', { name: 'Continue to Square' }).click();
+//   const page1Promise = page.waitForEvent('popup');
+//   await page.getByTestId('sandbox-test-accounts-table').locator('a').click();
+//   const page1 = await page1Promise;
+  
+//   // Maximize the page3 window
+//   await page1.setViewportSize({ width: 1920, height: 1080 });
+
+//   await page1.goto('https://app.squareupsandbox.com/dashboard/');
+//   await page1.getByRole('paragraph').filter({ hasText: 'Payments & invoices' }).click();
+//   await page1.getByTestId('sub-level-nav-section-child-transactions').getByText('Transactions').click();
+
+//   // Read latest transaction amount and compare
+//   await page1.locator("(//div[@class='l-transactions__desc-col type-ellipsis'])[1]").click();
+//   await page1.waitForTimeout(2000);
+//         // Define the folder path for saving the screenshot (Screenshot folder in Downloads)
+//         const folderPath = path.join(os.homedir(), 'Downloads', 'Screenshot');
+//         fs.mkdirSync(folderPath, { recursive: true });
+    
+//         // Take the screenshot and save it
+//         await page1.screenshot({
+//           path: path.join(folderPath, 'Square_Invoice_screenshot.png'),
+//         });
+//         console.log('Screenshot saved to', path.join(folderPath, 'Square_Invoice_screenshot.png'));
+//         const latestText = await page1.locator("//div[@class='detail-blade__body']").textContent();
+//         const locator = await page1.locator("//div[@class='l-pull-right type-tnum type-strong']").textContent();
+//         const cleanedText = latestText.replace(/\s+/g, ' ') // Replace multiple spaces or line breaks with a single space.trim(); // Remove leading and trailing whitespace
+//   console.log(`Latest Square Transaction Amount: ${cleanedText}`);
+//   const Squarevalue = locator.trim(); 
+//     // Print the text content
+//   console.log('Text Content:', Squarevalue);
+
+//   // Equality check between submitted amount and Square displayed value
+//   const submittedClean = (submittedAmount1 || '').trim();
+//   const squareClean = (Squarevalue || '').trim();
+//   const isEqual = submittedClean === squareClean;
+//   if (isEqual) {
+//     console.log(`Match: submittedAmount (${submittedClean}) equals Squarevalue (${squareClean})`);
+//   } else {
+//     console.log(`Mismatch: submittedAmount (${submittedClean}) vs Squarevalue (${squareClean})`);
+//   }
+//   await page1.close();
+//   return { match: isEqual, submittedAmount: submittedClean, squareValue: squareClean };
+// }
+
 
 

@@ -1,0 +1,121 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation "Toolbar":
+      - menu:
+        - group [ref=e3]:
+          - menuitem "About WordPress" [ref=e4] [cursor=pointer]:
+            - generic [ref=e5] [cursor=pointer]: 
+            - generic [ref=e6] [cursor=pointer]: About WordPress
+        - group [ref=e7]:
+          - menuitem " wppayautomation.instawp.xyz" [ref=e8] [cursor=pointer]
+        - group [ref=e9]:
+          - menuitem " Edit Site" [ref=e10] [cursor=pointer]
+        - group [ref=e11]:
+          - menuitem "0 Comments in moderation" [ref=e12] [cursor=pointer]:
+            - generic [ref=e13] [cursor=pointer]: 
+            - generic [ref=e14] [cursor=pointer]: "0"
+            - generic [ref=e15] [cursor=pointer]: 0 Comments in moderation
+        - group [ref=e16]:
+          - menuitem "New" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18] [cursor=pointer]: 
+            - generic [ref=e19] [cursor=pointer]: New
+        - group [ref=e20]:
+          - menuitem "Number of Logs (0)" [ref=e21] [cursor=pointer]
+        - group [ref=e22]:
+          - menuitem " Edit Page" [ref=e23] [cursor=pointer]
+        - group [ref=e24]:
+          - menuitem "" [ref=e25] [cursor=pointer]
+      - menu [ref=e26]:
+        - group [ref=e27]:
+          - menuitem "" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29] [cursor=pointer]: 
+        - group [ref=e30]:
+          - menuitem "Howdy, Automation" [ref=e31] [cursor=pointer]:
+            - text: Howdy,
+            - generic [ref=e32] [cursor=pointer]: Automation
+        - group [ref=e33]:
+          - menuitem " Search" [ref=e34]:
+            - generic [ref=e35]:
+              - text: 
+              - textbox "Search" [ref=e36] [cursor=pointer]
+              - generic [ref=e37]: Search
+  - link "Skip to content" [ref=e38] [cursor=pointer]:
+    - /url: "#wp--skip-link--target"
+  - generic [ref=e39]:
+    - banner [ref=e40]:
+      - generic [ref=e43]:
+        - paragraph [ref=e44]:
+          - link "wppayautomation.instawp.xyz" [ref=e45] [cursor=pointer]:
+            - /url: https://wppayautomation.instawp.xyz
+        - navigation [ref=e47]:
+          - list [ref=e52]:
+            - list [ref=e53]:
+              - listitem [ref=e54]:
+                - link "$ Symbol Currency with Popup Custom Page" [ref=e55] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/symbol-currency-with-popup-custom-page/
+              - listitem [ref=e56]:
+                - link "Sufiyan" [ref=e57] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/sufiyan/
+              - listitem [ref=e58]:
+                - link "USD Custom Page" [ref=e59] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/usd-custom-page/
+              - listitem [ref=e60]:
+                - link "USD Custom Page" [ref=e61] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/usd-custom-page-2/
+    - main [ref=e62]:
+      - generic [ref=e63]:
+        - heading "USD Custom Page" [level=1] [ref=e64]
+        - generic [ref=e65]: Form does not exist
+    - contentinfo [ref=e66]:
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - heading "wppayautomation.instawp.xyz" [level=2] [ref=e72]:
+            - link "wppayautomation.instawp.xyz" [ref=e73] [cursor=pointer]:
+              - /url: https://wppayautomation.instawp.xyz
+          - generic [ref=e74]:
+            - navigation [ref=e75]:
+              - list [ref=e76]:
+                - listitem [ref=e77]:
+                  - link "Blog" [ref=e78] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e79] [cursor=pointer]: Blog
+                - listitem [ref=e80]:
+                  - link "About" [ref=e81] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e82] [cursor=pointer]: About
+                - listitem [ref=e83]:
+                  - link "FAQs" [ref=e84] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e85] [cursor=pointer]: FAQs
+                - listitem [ref=e86]:
+                  - link "Authors" [ref=e87] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e88] [cursor=pointer]: Authors
+            - navigation [ref=e89]:
+              - list [ref=e90]:
+                - listitem [ref=e91]:
+                  - link "Events" [ref=e92] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e93] [cursor=pointer]: Events
+                - listitem [ref=e94]:
+                  - link "Shop" [ref=e95] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e96] [cursor=pointer]: Shop
+                - listitem [ref=e97]:
+                  - link "Patterns" [ref=e98] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e99] [cursor=pointer]: Patterns
+                - listitem [ref=e100]:
+                  - link "Themes" [ref=e101] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e102] [cursor=pointer]: Themes
+        - generic [ref=e104]:
+          - paragraph [ref=e105]: Twenty Twenty-Five
+          - paragraph [ref=e106]:
+            - text: Designed with
+            - link "WordPress" [ref=e107] [cursor=pointer]:
+              - /url: https://wordpress.org
+```

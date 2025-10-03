@@ -1,0 +1,227 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - navigation "Toolbar":
+      - menu:
+        - group [ref=e3]:
+          - menuitem "About WordPress" [ref=e4] [cursor=pointer]:
+            - generic [ref=e5] [cursor=pointer]: 
+            - generic [ref=e6] [cursor=pointer]: About WordPress
+        - group [ref=e7]:
+          - menuitem " wppayautomation.instawp.xyz" [ref=e8] [cursor=pointer]
+        - group [ref=e9]:
+          - menuitem " Edit Site" [ref=e10] [cursor=pointer]
+        - group [ref=e11]:
+          - menuitem "0 Comments in moderation" [ref=e12] [cursor=pointer]:
+            - generic [ref=e13] [cursor=pointer]: 
+            - generic [ref=e14] [cursor=pointer]: "0"
+            - generic [ref=e15] [cursor=pointer]: 0 Comments in moderation
+        - group [ref=e16]:
+          - menuitem "New" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18] [cursor=pointer]: 
+            - generic [ref=e19] [cursor=pointer]: New
+        - group [ref=e20]:
+          - menuitem "Number of Logs (0)" [ref=e21] [cursor=pointer]
+        - group [ref=e22]:
+          - menuitem " Edit Page" [ref=e23] [cursor=pointer]
+        - group [ref=e24]:
+          - menuitem "" [ref=e25] [cursor=pointer]
+      - menu [ref=e26]:
+        - group [ref=e27]:
+          - menuitem "" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29] [cursor=pointer]: 
+        - group [ref=e30]:
+          - menuitem "Howdy, Automation" [ref=e31] [cursor=pointer]:
+            - text: Howdy,
+            - generic [ref=e32] [cursor=pointer]: Automation
+        - group [ref=e33]:
+          - menuitem " Search" [ref=e34]:
+            - generic [ref=e35]:
+              - text: 
+              - textbox "Search" [ref=e36] [cursor=pointer]
+              - generic [ref=e37]: Search
+  - link "Skip to content" [ref=e38] [cursor=pointer]:
+    - /url: "#wp--skip-link--target"
+  - generic [ref=e39]:
+    - banner [ref=e40]:
+      - generic [ref=e43]:
+        - paragraph [ref=e44]:
+          - link "wppayautomation.instawp.xyz" [ref=e45] [cursor=pointer]:
+            - /url: https://wppayautomation.instawp.xyz
+        - navigation [ref=e47]:
+          - list [ref=e52]:
+            - list [ref=e53]:
+              - listitem [ref=e54]:
+                - link "$ Symbol Currency with Popup Custom Page" [ref=e55] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/symbol-currency-with-popup-custom-page/
+              - listitem [ref=e56]:
+                - link "$ Symbol Currency with Popup Custom Page" [ref=e57] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/symbol-currency-with-popup-custom-page-2/
+              - listitem [ref=e58]:
+                - link "$ Symbol Currency with Popup Custom Page" [ref=e59] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/symbol-currency-with-popup-custom-page-3/
+              - listitem [ref=e60]:
+                - link "Sufiyan" [ref=e61] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/sufiyan/
+              - listitem [ref=e62]:
+                - link "USD Custom Page" [ref=e63] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/usd-custom-page/
+              - listitem [ref=e64]:
+                - link "USD Custom Page" [ref=e65] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/usd-custom-page-2/
+              - listitem [ref=e66]:
+                - link "USD Custom Page" [ref=e67] [cursor=pointer]:
+                  - /url: https://wppayautomation.instawp.xyz/usd-custom-page-3/
+    - main [ref=e68]:
+      - generic [ref=e69]:
+        - heading "$ Symbol Currency with Popup Custom Page" [level=1] [ref=e70]
+        - button "Open the Simple form" [ref=e73]
+    - contentinfo [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - heading "wppayautomation.instawp.xyz" [level=2] [ref=e80]:
+            - link "wppayautomation.instawp.xyz" [ref=e81] [cursor=pointer]:
+              - /url: https://wppayautomation.instawp.xyz
+          - generic [ref=e82]:
+            - navigation [ref=e83]:
+              - list [ref=e84]:
+                - listitem [ref=e85]:
+                  - link "Blog" [ref=e86] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e87] [cursor=pointer]: Blog
+                - listitem [ref=e88]:
+                  - link "About" [ref=e89] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e90] [cursor=pointer]: About
+                - listitem [ref=e91]:
+                  - link "FAQs" [ref=e92] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e93] [cursor=pointer]: FAQs
+                - listitem [ref=e94]:
+                  - link "Authors" [ref=e95] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e96] [cursor=pointer]: Authors
+            - navigation [ref=e97]:
+              - list [ref=e98]:
+                - listitem [ref=e99]:
+                  - link "Events" [ref=e100] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e101] [cursor=pointer]: Events
+                - listitem [ref=e102]:
+                  - link "Shop" [ref=e103] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e104] [cursor=pointer]: Shop
+                - listitem [ref=e105]:
+                  - link "Patterns" [ref=e106] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e107] [cursor=pointer]: Patterns
+                - listitem [ref=e108]:
+                  - link "Themes" [ref=e109] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e110] [cursor=pointer]: Themes
+        - generic [ref=e112]:
+          - paragraph [ref=e113]: Twenty Twenty-Five
+          - paragraph [ref=e114]:
+            - text: Designed with
+            - link "WordPress" [ref=e115] [cursor=pointer]:
+              - /url: https://wordpress.org
+  - generic [ref=e116]:
+    - link [ref=e117] [cursor=pointer]:
+      - /url: "#wpep_popup-1097"
+    - form [ref=e124]:
+      - heading "Simple Form" [level=3] [ref=e125]
+      - paragraph [ref=e126]: This is a simple form ejqomf7d
+      - generic [ref=e127]:
+        - list [ref=e129]:
+          - listitem [ref=e130]:
+            - generic [ref=e132]: Basic Info
+          - listitem [ref=e133]:
+            - generic [ref=e135]: Payment
+          - listitem [ref=e136]:
+            - generic [ref=e138]: Confirm
+        - group [ref=e139]:
+          - heading "Payment Information" [level=5] [ref=e140]
+          - generic [ref=e141]:
+            - generic [ref=e142]: "*Select Amount"
+            - generic [ref=e143]:
+              - generic [ref=e145] [cursor=pointer]: $10
+              - generic [ref=e147] [cursor=pointer]: $20
+              - generic [ref=e149] [cursor=pointer]: $30
+              - generic [ref=e151] [cursor=pointer]: $40
+              - generic [ref=e153] [cursor=pointer]: Other
+            - generic [ref=e155]:
+              - text: $
+              - spinbutton [ref=e156]: "10"
+          - generic [ref=e157]:
+            - generic [ref=e158]:
+              - link "×" [ref=e159] [cursor=pointer]:
+                - /url: "#"
+              - text: This request could not be authorized.
+            - list [ref=e160]:
+              - listitem [ref=e161] [cursor=pointer]:
+                - img "Avatar" [ref=e162] [cursor=pointer]
+                - generic [ref=e163] [cursor=pointer]: Payment Card
+              - listitem [ref=e164] [cursor=pointer]:
+                - img "Avatar" [ref=e165] [cursor=pointer]
+                - generic [ref=e166] [cursor=pointer]: Google Pay
+              - listitem [ref=e167] [cursor=pointer]:
+                - img "Avatar" [ref=e168] [cursor=pointer]
+                - generic [ref=e169] [cursor=pointer]: After Pay
+              - listitem [ref=e170] [cursor=pointer]:
+                - img "Avatar" [ref=e171] [cursor=pointer]
+                - generic [ref=e172] [cursor=pointer]: Cash App
+              - listitem [ref=e173] [cursor=pointer]:
+                - img "Avatar" [ref=e174] [cursor=pointer]
+                - generic [ref=e175] [cursor=pointer]: Square Gift Card
+              - listitem [ref=e176] [cursor=pointer]:
+                - img "Avatar" [ref=e177] [cursor=pointer]
+                - generic [ref=e178] [cursor=pointer]: ACH Debit
+            - generic [ref=e181]:
+              - generic [ref=e182]:
+                - generic [ref=e184] [cursor=pointer]:
+                  - radio "Add New Card" [checked] [ref=e185] [cursor=pointer]
+                  - text: Add New Card
+                - generic [ref=e187] [cursor=pointer]:
+                  - radio "Use Existing Card" [ref=e188] [cursor=pointer]
+                  - text: Use Existing Card
+              - generic [ref=e189]:
+                - iframe [ref=e194]:
+                  - generic [ref=f1e3]:
+                    - generic [ref=f1e4]:
+                      - generic [ref=f1e5]:
+                        - textbox "Card number" [ref=f1e6]: 4111 1111 1111 1111
+                        - generic:
+                          - generic: 4111 1111 1111 1111
+                      - img "Visa" [ref=f1e7]:
+                        - img [ref=f1e9]
+                        - img [ref=f1e13]
+                    - generic [ref=f1e22]:
+                      - generic [ref=f1e23]:
+                        - textbox "MM/YY" [ref=f1e24]: 11/29
+                        - generic:
+                          - generic: 11/29
+                      - generic [ref=f1e25]:
+                        - textbox "CVV" [ref=f1e26]: "321"
+                        - generic:
+                          - generic: "321"
+                      - generic [ref=f1e27]:
+                        - textbox "ZIP" [ref=f1e28]: "43523"
+                        - generic:
+                          - generic: "43523"
+                - generic [ref=e195]:
+                  - checkbox "Save card for later use" [checked] [ref=e196] [cursor=pointer]: ✓
+                  - generic [ref=e197] [cursor=pointer]: Save card for later use
+          - generic [ref=e199]:
+            - checkbox "I accept the" [checked] [ref=e200] [cursor=pointer]: ✓
+            - generic [ref=e201] [cursor=pointer]: I accept the
+            - link "This is the terms and condition" [ref=e202] [cursor=pointer]:
+              - /url: http://www.google.com
+          - generic [ref=e203]:
+            - link "Previous" [ref=e204] [cursor=pointer]:
+              - /url: javascript:;
+            - button "Pay $10.00" [active] [ref=e206] [cursor=pointer]:
+              - text: Pay
+              - generic [ref=e208] [cursor=pointer]: $10.00
+```

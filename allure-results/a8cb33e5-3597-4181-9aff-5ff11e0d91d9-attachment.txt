@@ -1,0 +1,21 @@
+WP Easy Pay text content: WP EASY PAY
+	WP EASY PAYAll FormsCreate Payment FormSubscriptionsCouponsReportsSquare ConnectIntegrationsSubmit Feature IdeaAffiliationAccount
+Looking for amount: $200
+Found 0 transactions
+❌ No matching transaction found for amount: $200
+Available amounts: []
+Total pages found with name '$ Custom Page': 3
+Remaining pages with name '$ Custom Page': 3
+Page found and will be deleted
+Page deleted successfully and moving to Trash now ...  
+Remaining pages with name '$ Custom Page': 2
+Page found and will be deleted
+Page deleted successfully and moving to Trash now ...  
+Remaining pages with name '$ Custom Page': 1
+Page found and will be deleted
+Page deleted successfully and moving to Trash now ...  
+Remaining pages with name '$ Custom Page': 0
+Total forms found with name 'Simple Form': 1
+All forms with name "Simple Form" have been successfully deleted.
+Logs Count: Number of Logs (4)
+Screenshot saved to C:\Users\Objects\Downloads\Screenshot\debug_log_screenshot.png

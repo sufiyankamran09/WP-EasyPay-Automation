@@ -1,0 +1,28 @@
+WP Easy Pay text content: WP EASY PAY
+	WP EASY PAYAll FormsCreate Payment FormSubscriptionsCouponsReportsSquare ConnectIntegrationsSubmit Feature IdeaAffiliationAccount
+Found 7 actual transaction rows
+Found amount element 1
+Found amount element 2
+Found amount element 3
+Found amount element 4
+Found amount element 5
+Found amount element 6
+Found amount element 7
+Found 7 transaction amounts
+Final: Found 7 transaction amounts
+Looking for amount: $200.00
+Transaction 7: $200.00
+Comparing: "200" vs "200"
+✅ Found matching transaction at index 7: $200.00 (Latest match)
+🎯 Clicking on matching transaction...
+✅ Successfully clicked on transaction
+Screenshot saved to C:\Users\Objects\Downloads\Screenshot\Square_Invoice_1759471789917__200_00.png
+Square Transaction Details: $200.00 Payment Oct 3, 2025 9:41 am Collected at: Default Test Account Order Source: Sandbox for sq0idp-k0r5c0MNIBIkTd5pXmV-tg Sale attributed to: Untracked team member Paid by: Muhammad Sufiyan Simple Payment $200.00 Total $200.00 Visa 1111 $200.00 Oct 3, 2025 9:41 am
+Transaction Amount: $200.00
+✅ Match: submittedAmount ($200.00) equals Squarevalue ($200.00)
+Total pages found with name '$ Custom Page': 0
+Remaining pages with name '$ Custom Page': 0
+Total forms found with name 'Simple Form': 1
+All forms with name "Simple Form" have been successfully deleted.
+Logs Count: Number of Logs (1)
+Screenshot saved to C:\Users\Objects\Downloads\Screenshot\debug_log_screenshot.png

@@ -1,0 +1,35 @@
+WP Easy Pay text content: WP EASY PAY
+	WP EASY PAYAll FormsCreate Payment FormSubscriptionsCouponsReportsSquare ConnectIntegrationsSubmit Feature IdeaAffiliationAccount
+ [wpep-form id="1082"] 
+Your form has been created successfully
+Your page has been added successfully
+This is the Total Amount : 200.00
+Your Payment is Successfully Sent.  
+Found 6 actual transaction rows
+Found amount element 1
+Found amount element 2
+Found amount element 3
+Found amount element 4
+Found amount element 5
+Found amount element 6
+Found 6 transaction amounts
+Final: Found 6 transaction amounts
+Looking for amount: 200.00
+Transaction 6: $200.00
+Comparing: "200" vs "200"
+✅ Found matching transaction at index 6: $200.00 (Latest match)
+🎯 Clicking on matching transaction...
+✅ Successfully clicked on transaction
+Screenshot saved to C:\Users\Objects\Downloads\Screenshot\Square_Invoice_1759471725161_200_00.png
+Square Transaction Details: $200.00 Payment Oct 3, 2025 9:41 am Collected at: Default Test Account Order Source: Sandbox for sq0idp-k0r5c0MNIBIkTd5pXmV-tg Sale attributed to: Untracked team member Paid by: Muhammad Sufiyan Simple Payment $200.00 Total $200.00 Visa 1111 $200.00 Oct 3, 2025 9:41 am
+Transaction Amount: $200.00
+❌ Mismatch: submittedAmount (200.00) vs Squarevalue ($200.00)
+Total pages found with name 'No Code/Symbol Custom Page': 1
+Remaining pages with name 'No Code/Symbol Custom Page': 1
+Page found and will be deleted
+Page deleted successfully and moving to Trash now ...  
+Remaining pages with name 'No Code/Symbol Custom Page': 0
+Total forms found with name 'Simple Form': 3
+All forms with name "Simple Form" have been successfully deleted.
+Logs Count: Number of Logs (4)
+Screenshot saved to C:\Users\Objects\Downloads\Screenshot\debug_log_screenshot.png

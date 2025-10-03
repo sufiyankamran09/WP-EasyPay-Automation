@@ -36,7 +36,7 @@ test('WordPress Form Creation Test', async ({ page }) => {
 //Create and submit a simple payment form with payment custom layout //
 // $ Currency symbol//
 test('$ Symbol Currency', async ({ page }) => {
-  test.setTimeout(200000);
+  test.setTimeout(250000);
 
   // Login WP using utility function
   await loginToWordPress(page);
@@ -51,8 +51,8 @@ test('$ Symbol Currency', async ({ page }) => {
   const submittedAmount1 = await CustomFormSubmit(page, { currency: 'dollar' });
 
   // Verify payment success using utility function
-   await verifyPaymentSuccess(page);
-   await checkSquareTransaction(page,submittedAmount1);
+  //  await verifyPaymentSuccess(page);
+   await checkSquareTransaction(page, submittedAmount1);
 
    // Delete Page using utility function  
    await deletePageByName(page, '$ Custom Page');

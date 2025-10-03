@@ -1,0 +1,12 @@
+WP Easy Pay text content: WP EASY PAY
+	WP EASY PAYAll FormsCreate Payment FormSubscriptionsCouponsReportsSquare ConnectIntegrationsSubmit Feature IdeaAffiliationAccount
+Looking for amount: $200.00
+Found 0 transactions
+❌ No matching transaction found for amount: $200.00
+Available amounts: []
+Total pages found with name '$ Custom Page': 0
+Remaining pages with name '$ Custom Page': 0
+Total forms found with name 'Simple Form': 0
+All forms with name "Simple Form" have been successfully deleted.
+Logs Count: Number of Logs (0)
+No logs found, skipping screenshot.
